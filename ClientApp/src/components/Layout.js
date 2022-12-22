@@ -10,10 +10,10 @@ export class Layout extends Component {
     return (
       <div>
         <Header />
-        <Container>
+        <Container className='container-wrap'>
+        <MenuItems />
           {this.props.children}
         </Container>
-        <MenuItems/>
       </div>
     );
   }

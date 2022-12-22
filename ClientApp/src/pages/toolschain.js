@@ -13,7 +13,7 @@ export class ToolsChain extends Component {
   static displayName = ToolsChain.name;
     render(){
       return(
-        <div className='toolschain-outer'>
+        <div className='toolschain-outer page-outer'>
           <h2 className='github-text'>Managing GitHub</h2>
           <div className="tabs">
             <Tabs>

@@ -7,7 +7,7 @@ export class Project extends Component {
   static displayName = Project.name;
   render() {
     return ( 
-        <div>
+        <div className='page-outer'>
           <div className='env-btn-outer'>
             <Button variant="contained">NEW PROJECT</Button>
           </div>

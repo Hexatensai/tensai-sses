@@ -10,7 +10,7 @@ export class MasterData extends Component {
   static displayName = MasterData.name;
     render(){
       return(
-        <div className="tabs">
+        <div className="tabs  page-outer">
          <Tabs>
            <Tab label="Environments">
              <div>

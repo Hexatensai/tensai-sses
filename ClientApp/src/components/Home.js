@@ -24,7 +24,9 @@ export class Home extends Component {
   static displayName = Home.name;
   render() {
     return(
-      <h1><SplitText copy="Welcome to Tensai Release" role="heading" /></h1>
+      <h2 className='col-md-9 page-outer welcome-text'>
+        <SplitText copy="Welcome to Tensai Release" role="heading" />
+      </h2>
     );
   }
 }

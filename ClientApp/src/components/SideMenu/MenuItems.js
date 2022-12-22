@@ -10,6 +10,7 @@ import ConstructionIcon from '@mui/icons-material/Construction';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import ArticleIcon from '@mui/icons-material/Article';
 import PreviewIcon from '@mui/icons-material/Preview';
+import { Link } from "react-router-dom";
 
 const style = {
   width: '100%',
@@ -25,22 +26,26 @@ export default function MenuItems() {
     <List sx={style} component="nav" aria-label="mailbox folders">
       <ListItem button className='nav-border' >
         <ListItemText>
-          <StorageIcon/>   MasterData 
+          <StorageIcon/>  
+          <Link to="/master-data" className='redirect-link'>MasterData</Link> 
         </ListItemText>
       </ListItem>
       <ListItem button className='nav-border' >
       <ListItemText>
-          <AccountTreeIcon/>   Project
+          <AccountTreeIcon/>  
+          <Link to="/projects" className='redirect-link'>Project</Link>  
         </ListItemText>
       </ListItem>
       <ListItem button className='nav-border'>
       <ListItemText>
-          <CreateIcon/>   Pipelines
+          <CreateIcon/>  
+          <Link to="/pipelines" className='redirect-link'>Pipelines</Link> 
         </ListItemText>
       </ListItem>
       <ListItem button className='nav-border'>
       <ListItemText>
-          <ConstructionIcon/>   ToolsChain
+          <ConstructionIcon/> 
+          <Link to="/toolsChain" className='redirect-link'>ToolsChain</Link> 
         </ListItemText>
       </ListItem>
       <ListItem button className='nav-border'>
@@ -55,7 +60,8 @@ export default function MenuItems() {
       </ListItem>
       <ListItem button>
       <ListItemText>
-          <ArticleIcon/>   Documentation
+          <ArticleIcon/>  
+          <Link to="/communityforum" className='redirect-link'>Documentation</Link> 
         </ListItemText>
       </ListItem>
     </List>

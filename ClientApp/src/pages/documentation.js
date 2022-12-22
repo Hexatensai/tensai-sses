@@ -7,7 +7,7 @@ export class Document extends Component {
   static displayName = Document.name;
   render() {
     return (  
-     <div className='community-forum-outer'>
+     <div className='community-forum-outer page-outer'>
       <h2>Community Forum</h2>
       <Stack className='alert-outer' sx={{ width: '100%' }} spacing={2}>        
         <Alert severity="success"><strong>Documentation !</strong> &nbsp;&nbsp;Coming Soon</Alert>

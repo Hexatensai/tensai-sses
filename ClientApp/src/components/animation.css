@@ -1,11 +1,8 @@
-    h1 {
-    font-size: 3em;
-    text-align: center;
-    font-weight: 600;
-    color: #353239;
-  }
+    .welcome-text {
+      text-align: center;
+    }
   
-  h1 span span {
+    h2 span span {
       color: #664bee;
       position: relative;
       bottom: -1em;

@@ -8,7 +8,7 @@ export class Pipelines extends Component {
   static displayName = Pipelines.name;
   render() {
     return ( 
-        <div>
+        <div className='page-outer'>
             <table className="table table-striped">
             <thead>
                 <tr>

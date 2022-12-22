@@ -73,3 +73,27 @@ button{
   display: flex;
   margin: 0 auto;
 }
+.container-wrap .css-1692j61-MuiList-root {
+  margin: 0;
+  width: 25%;
+  height: 100vh;
+}
+.container-wrap {
+  display: flex;
+  max-width: initial;
+  padding: 0;
+}
+.page-outer {
+  margin-top: 1.5rem !important;
+  position: relative;
+  max-width: 1050px;
+  margin: 0 auto;
+  width: 100%;
+}
+.redirect-link, .redirect-link:hover {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
