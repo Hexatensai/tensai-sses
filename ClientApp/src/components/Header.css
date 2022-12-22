@@ -1,0 +1,55 @@
+﻿.logo-outer {
+  height: 35px;
+  width: auto;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+h2 {
+  color: #664bee;
+}
+header {
+  box-shadow: 0 5px 5px -5px #11111173;
+  margin-bottom: 1rem;
+}
+.header-outer {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.2rem 0;
+  display: flex;
+  align-items: center;
+}
+.hexaware-outer {
+  width: 40px;
+  height: 40px;
+}
+.header-right-align {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.header-center-align {
+  display: flex;
+  justify-content: center;
+}
+
+.header-right-align .notification-icon {
+  margin: 0 1rem;
+}
+.profile-icon {
+  display: flex;
+}
+.submenu {
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 10px
+}
+.submenu p {
+  margin: 0;
+}
+.dropdown-menu.show {
+  transform: translate(-32px, 35px) !important;
+  min-width: initial;
+}

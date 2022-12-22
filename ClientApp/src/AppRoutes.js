@@ -1,5 +1,8 @@
-import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
+import { Document } from "./pages/documentation";
+import { MasterData } from "./pages/masterdata";
+import { Pipelines } from "./pages/pipelines";
+import { Project } from "./pages/project";
+import { Toolschain } from "./pages/toolschain";
 import { Home } from "./components/Home";
 
 const AppRoutes = [
@@ -8,12 +11,24 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: '/counter',
-    element: <Counter />
+    path: '/communityforum',
+    element: <Document />
   },
   {
-    path: '/fetch-data',
-    element: <FetchData />
+    path: '/master-data',
+    element: <MasterData />
+  },
+  {
+    path: '/pipelines',
+    element: <Pipelines />
+  },
+  {
+    path: '/projects',
+    element: <Project />
+  },
+  {
+    path: '/toolschain',
+    element: <Toolschain />
   }
 ];
 
