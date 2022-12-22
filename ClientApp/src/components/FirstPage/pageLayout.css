@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .form-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px;
+  }
+
+.btn {
+    background-color: silver;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 180px;
+    padding: 15px;
+    font-size: 27px;
+    margin-top: 180px;
+  }
+  .btn:hover {
+    background-color: rgb(231, 218, 218);
+  }
