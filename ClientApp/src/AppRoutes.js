@@ -2,7 +2,7 @@ import { Document } from "./pages/documentation";
 import { MasterData } from "./pages/masterdata";
 import { Pipelines } from "./pages/pipelines";
 import { Project } from "./pages/project";
-import { Toolschain } from "./pages/toolschain";
+import { ToolsChain } from "./pages/toolschain";
 import { Home } from "./components/Home";
 
 const AppRoutes = [
@@ -28,7 +28,7 @@ const AppRoutes = [
   },
   {
     path: '/toolschain',
-    element: <Toolschain />
+    element: <ToolsChain />
   }
 ];
 

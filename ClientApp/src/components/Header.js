@@ -13,7 +13,9 @@ export class Header extends Component {
       <header>
         <div className='header-outer row'>
           <div className='logo-outer col-sm'>
-            <img  src={tensaiLogo} alt='tensai-logo'/>
+            <a href="/" title='tensai-logo'>
+              <img  src={tensaiLogo} alt='tensai-logo'/>
+            </a>
           </div>
           <div className='col-sm header-center-align'>
             <h2>Tensai Release</h2>

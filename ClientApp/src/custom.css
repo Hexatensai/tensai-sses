@@ -17,10 +17,37 @@ button{
   border-bottom:2px solid transparent;
   
 }
+.toolschain-outer .tab-buttons button {
+  font-size: 17px;
+}
+.toolschain-outer label {
+  display: flex;
+  width: 100%;
+  font-weight: 700;
+  font-size: 17px;
+  align-items: center;
+  margin-bottom: 2rem !important;
+}
+.toolschain-outer .css-xn6ruc>:not(style) {
+  margin: 0;
+  width: 100%;
+}
+.toolschain-outer
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 0.8rem;
+}
+.toolschain-outer .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  margin-left: 2rem !important;
+}
 .active{
   border-bottom:2px solid #664bee;
   color: #000;
   font-weight: 700;
+}
+.toolschain-outer .css-e53awj-MuiStack-root {
+  display: flex;
+  justify-content: center;
+  width: 74%;
 }
 .table > thead {
   background-color: #664bee;
@@ -33,4 +60,16 @@ button{
   display: flex;
   margin-bottom: 2rem;
   justify-content: flex-end;
+}
+.github-text {
+  padding: 1rem 0;
+}
+.community-forum-outer h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.community-forum-outer .alert-outer {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
 }
