@@ -10,15 +10,15 @@ export class PipelineStages extends Component {
     return ( 
         <div>
           <div className='env-btn-outer'>
-            <Button variant="contained">NEW STAGE</Button>
+          <Button variant="contained">NEW STAGE</Button>
           </div>
-            <table className="table table-striped">
+          <table className="table table-striped">
             <thead>
                 <tr>
                 <th scope="col">Stage Name</th>
                 <th scope="col">Description</th>
-                <th scope="col">To Modify</th>
-                <th scope="col">To Obsolete</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Obsolete</th>
                 </tr>
             </thead>
             <tbody>

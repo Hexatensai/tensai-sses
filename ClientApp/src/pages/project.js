@@ -18,7 +18,7 @@ export class Project extends Component {
                 <th scope="col">Description</th>
                 <th scope="col">SCM</th>
                 <th scope="col">Deployment</th>
-                <th scope="col">To Obsolete</th>
+                <th scope="col">Obsolete</th>
                 </tr>
             </thead>
             <tbody>

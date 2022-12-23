@@ -19,8 +19,8 @@ export class StageToolsMapping extends Component {
                 <th scope="col">Tool</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
-                <th scope="col">To Modify</th>
-                <th scope="col">To Obsolete</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Obsolete</th>
                 </tr>
             </thead>
             <tbody>

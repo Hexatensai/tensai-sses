@@ -20,7 +20,7 @@ export default function SignOutButton() {
     return (
         // <Button variant="secondary" className="ml-auto" onClick={() => handleLogout("popup")}>Sign out using Popup</Button>
         <div className="form-class">
-        <button className="btn" onClick={()=> handleLogout("popup")}>SignOut</button>
+        <button type="button" className="btn btn-primary" onClick={()=> handleLogout("popup")}>SignOut</button>
         </div>
     );
 }

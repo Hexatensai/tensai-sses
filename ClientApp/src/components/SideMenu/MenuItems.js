@@ -25,12 +25,6 @@ export default function MenuItems() {
   return (
     <List sx={style} component="nav" aria-label="mailbox folders">
       <ListItem button className='nav-border' >
-        <ListItemText>
-          <StorageIcon/>  
-          <Link to="/master-data" className='redirect-link'>MasterData</Link> 
-        </ListItemText>
-      </ListItem>
-      <ListItem button className='nav-border' >
       <ListItemText>
           <AccountTreeIcon/>  
           <Link to="/projects" className='redirect-link'>Project</Link>  
@@ -50,12 +44,20 @@ export default function MenuItems() {
       </ListItem>
       <ListItem button className='nav-border'>
       <ListItemText>
-          <SettingsApplicationsIcon/>   AppOps
+          <SettingsApplicationsIcon/>  
+          <a className='redirect-link' title='AppOps'>AppOps</a>
         </ListItemText>
       </ListItem>
       <ListItem button className='nav-border'>
       <ListItemText>
-          <PreviewIcon/>   Hexaview
+          <PreviewIcon/>   
+          <a className='redirect-link' title="Hexaview">Hexaview</a>
+        </ListItemText>
+      </ListItem>
+      <ListItem button className='nav-border' >
+        <ListItemText>
+          <StorageIcon/>  
+          <Link to="/master-data" className='redirect-link'>MasterData</Link> 
         </ListItemText>
       </ListItem>
       <ListItem button>

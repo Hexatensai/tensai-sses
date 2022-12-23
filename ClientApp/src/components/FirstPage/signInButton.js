@@ -20,7 +20,7 @@ export default function SignInButton() {
     return (
         
         <div className="form-class" >
-        <button className="btn" onClick={()=> handleLogin("popup")}>SignIn</button>
+          <button type="button" className="btn btn-primary" onClick={()=> handleLogin("popup")}>SignIn</button>
         </div>
     );
 }

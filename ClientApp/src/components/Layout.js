@@ -9,10 +9,14 @@ export class Layout extends Component {
   render() {
     return (
       <div>
-        <Header />
+        {window.location.pathname !== "/" ? (
+          <Header />
+         ) : null}
         <Container className='container-wrap'>
-        <MenuItems />
-          {this.props.children}
+        {window.location.pathname !== "/" ? (
+          <MenuItems />
+         ) : null}
+            {this.props.children}
         </Container>
       </div>
     );

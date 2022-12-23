@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { masterData } from "../../datamodel/data";
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 
 export class SupportedTools extends Component {
   static displayName = SupportedTools.name;
