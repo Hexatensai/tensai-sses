@@ -1,16 +1,16 @@
 
 import React, { Component } from 'react';
-import { Environments } from '../components/masterdata/Environments';
-import { PipelineStages } from '../components/masterdata/PipelineStages';
-import { StageToolsMapping } from '../components/masterdata/StageToolsMapping';
-import { SupportedTools } from '../components/masterdata/SupportedTools';
+import Environments  from '../components/masterdata/Environments';
+import PipelineStages from '../components/masterdata/PipelineStages';
+import StageToolsMapping from '../components/masterdata/StageToolsMapping';
+import SupportedTools  from '../components/masterdata/SupportedTools';
 import '../custom.css';
 
 export class MasterData extends Component {
   static displayName = MasterData.name;
     render(){
       return(
-        <div className="tabs  page-outer">
+        <div className="tabs page-outer">
          <Tabs>
            <Tab label="Environments">
              <div>
@@ -34,7 +34,7 @@ export class MasterData extends Component {
            </Tab>
          </Tabs>
         </div>
-        
+
       )
     }
   }

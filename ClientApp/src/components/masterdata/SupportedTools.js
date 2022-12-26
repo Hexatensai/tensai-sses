@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
-import { masterData } from "../../datamodel/data";
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 
-export class SupportedTools extends Component {
-  static displayName = SupportedTools.name;
-  render() {
+
+    function SupportedTools() {
+      const [supportedTools, setSupportedTools] = useState([]);
+    
+        const fetchData = () => {
+         return fetch("https://52.146.8.157:7244/api/SupportTools/")
+           .then((response) => response.json())
+           .then((data) => setSupportedTools(data));
+        }
+        useEffect(() => {
+          fetchData()
+        }, [])
     return ( 
         <div>
           <div className='env-btn-outer'>
-            <Button variant="contained">NEW TOOL</Button>
+            <Button variant="contained" className='btn-style'>NEW TOOL</Button>
           </div>
             <table className="table table-striped">
             <thead>
@@ -18,10 +26,10 @@ export class SupportedTools extends Component {
                 </tr>
             </thead>
             <tbody>
-            {masterData.map((data, key) => {
+            {supportedTools.map((data, key) => {
                return (
                 <tr key={key}>
-                    <td>{data.environmentName}</td>
+                    <td>{data.name}</td>
                     <td>{ data.description}</td>
                 </tr>
                  );
@@ -30,5 +38,6 @@ export class SupportedTools extends Component {
             </table>
         </div>
     );
-  }
+
 }
+export default SupportedTools

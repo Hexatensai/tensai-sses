@@ -1,14 +1,14 @@
 export const masterData = [
   {
-    environmentName: "DEV",
+    name: "DEV",
     description: "Development Environment",
   },
   {
-    environmentName: "PROD",
+    name: "PROD",
     description: "Production Environment",
   },
   {
-    environmentName: "QA",
+    name: "QA",
     description: "Testing Environment",
   }
 ];

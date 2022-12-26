@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
-import { masterData } from "../../datamodel/data";
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-export class PipelineStages extends Component {
-  static displayName = PipelineStages.name;
-  render() {
+function PipelineStages() {
+  const [pipelineStages, setPipelineStages] = useState([]);
+
+    const fetchData = () => {
+     return fetch("https://52.146.8.157:7244/api/PipelineStages/")
+       .then((response) => response.json())
+       .then((data) => setPipelineStages(data));
+    }
+    useEffect(() => {
+      fetchData()
+    }, [])
     return ( 
         <div>
           <div className='env-btn-outer'>
-          <Button variant="contained">NEW STAGE</Button>
+          <Button variant="contained" className='btn-style'>NEW STAGE</Button>
           </div>
           <table className="table table-striped">
             <thead>
@@ -22,18 +29,18 @@ export class PipelineStages extends Component {
                 </tr>
             </thead>
             <tbody>
-            {masterData.map((data, key) => {
+            {pipelineStages.map((data, key) => {
                return (
                 <tr key={key}>
-                <td>{data.environmentName}</td>
+                <td>{data.name}</td>
                 <td>{ data.description}</td>
                 <td>
-                <Button variant="contained" startIcon={<EditIcon />} color="primary">
+                <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary">
                   Edit
                 </Button>
                 </td>
                 <td>
-                <Button variant="outlined" startIcon={<DeleteIcon />}>
+                <Button variant="outlined" className='btn-style' startIcon={<DeleteIcon />}>
                   Delete
                 </Button>
                 </td>
@@ -44,5 +51,5 @@ export class PipelineStages extends Component {
             </table>
         </div>
     );
-  }
 }
+export default PipelineStages

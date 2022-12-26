@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
-import { masterData } from "../datamodel/data";
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 
-export class Project extends Component {
-  static displayName = Project.name;
-  render() {
+function Project() {
+    const [projects, setProjects] = useState([]);
+
+    const fetchData = () => {
+     return fetch("https://52.146.8.157:7244/api/Project/")
+       .then((response) => response.json())
+       .then((data) => setProjects(data));
+    }
+    useEffect(() => {
+      fetchData()
+    }, [])
     return ( 
         <div className='page-outer'>
           <div className='env-btn-outer'>
-            <Button variant="contained">NEW PROJECT</Button>
+            <Button variant="contained" className='btn-style'>NEW PROJECT</Button>
           </div>
             <table className="table table-striped">
             <thead>
@@ -18,19 +25,31 @@ export class Project extends Component {
                 <th scope="col">Description</th>
                 <th scope="col">SCM</th>
                 <th scope="col">Deployment</th>
-                <th scope="col">Obsolete</th>
+                <th scope="col">Modify</th>
                 </tr>
             </thead>
             <tbody>
-            {masterData.map((data, key) => {
+            {projects.map((data, key) => {
                return (
                 <tr key={key}>
-                    <td>{data.environmentName}</td>
+                    <td>{data.name}</td>
                     <td>{ data.description}</td>
-                    <td>TensaiGitHub</td>
-                    <td>Opted</td>
+                    <td>{data.scm_tool}</td>
                     <td>
-                    <Button variant="contained" startIcon={<EditIcon />} color="primary">
+                    {(() => {
+                    if (data.deploy == true) {
+                      return (
+                        <div>Opted</div>
+                      )
+                    } else {
+                      return (
+                        <div>None</div>
+                      )
+                    }
+                    })()}
+                    </td>
+                    <td>
+                    <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary">
                     Edit
                     </Button>
                     </td>
@@ -41,5 +60,6 @@ export class Project extends Component {
             </table>
         </div>
     );
-  }
+  
 }
+export default Project

@@ -1,39 +1,47 @@
-import React, { Component } from 'react';
-import { masterData } from "../../datamodel/data";
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-export class Environments extends Component {
-  static displayName = Environments.name;
-  render() {
+
+function Environments() {
+  const [environments, setEnvironments] = useState([]);
+
+    const fetchData = () => {
+     return fetch("https://52.146.8.157:7244/api/environments")
+       .then((response) => response.json())
+       .then((data) => setEnvironments(data));
+    }
+    useEffect(() => {
+      fetchData()
+    }, [])
     return ( 
         <div>
           <div className='env-btn-outer'>
-            <Button variant="contained">New Environment</Button>
+            <Button variant="contained" className='btn-style'>New Environment</Button>
           </div>
             <table className="table table-striped">
             <thead>
                 <tr>
                 <th scope="col">Environment Name</th>
                 <th scope="col">Description</th>
-                <th scope="col">To Modify</th>
-                <th scope="col">To Obsolete</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Obsolete</th>
                 </tr>
             </thead>
             <tbody>
-            {masterData.map((data, key) => {
+            {environments.map((data, key) => {
                return (
                 <tr key={key}>
-                <td>{data.environmentName}</td>
+                <td>{data.name}</td>
                 <td>{ data.description}</td>
                 <td>
-                <Button variant="contained" startIcon={<EditIcon />} color="primary">
+                <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary">
                   Edit
                 </Button>
                 </td>
                 <td>
-                <Button variant="outlined" startIcon={<DeleteIcon />}>
+                <Button variant="outlined" className='btn-style' startIcon={<DeleteIcon />}>
                   Delete
                 </Button>
                 </td>
@@ -44,5 +52,6 @@ export class Environments extends Component {
             </table>
         </div>
     );
-  }
+
 }
+export default Environments

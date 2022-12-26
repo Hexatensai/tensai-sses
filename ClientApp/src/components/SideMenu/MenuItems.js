@@ -2,7 +2,6 @@ import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import './MenuItems.css';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import CreateIcon from '@mui/icons-material/Create';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -15,9 +14,9 @@ import { Link } from "react-router-dom";
 const style = {
   width: '100%',
   maxWidth: 200,
-  bgcolor: '#664bee',
-  marginTop: '60px',
-  color: '#ffffff'
+  bgcolor: '#06c',
+  color: '#fff',
+  height: '100vh'
 };
 
 export default function MenuItems() {

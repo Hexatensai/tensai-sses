@@ -1,9 +1,16 @@
 
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+html, body, html * {
+  font-family: 'Roboto', sans-serif;
+}
+
 .tab-buttons{
   margin-bottom: 2rem;
 }
 
-button{
+button {
   margin-right:15px;
   font-size:20px;
   background:transparent;
@@ -36,11 +43,12 @@ button{
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   height: 0.8rem;
 }
-.toolschain-outer .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+.toolschain-outer .css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
+.toolschain-outer .form-check-input {
   margin-left: 2rem !important;
 }
 .active{
-  border-bottom:2px solid #664bee;
+  border-bottom:2px solid #06c;
   color: #000;
   font-weight: 700;
 }
@@ -50,11 +58,12 @@ button{
   width: 74%;
 }
 .table > thead {
-  background-color: #664bee;
+  background-color: #06c;
   color: #fff;
 }
 .table th, .table td {
   padding: 0.8rem;
+  font-weight: initial;
 }
 .env-btn-outer {
   display: flex;
@@ -73,11 +82,6 @@ button{
   display: flex;
   margin: 0 auto;
 }
-.container-wrap .css-1692j61-MuiList-root {
-  margin: 0;
-  width: 25%;
-  height: 100vh;
-}
 .container-wrap {
   display: flex;
   max-width: initial;
@@ -91,10 +95,34 @@ button{
   width: 100%;
 }
 .redirect-link, .redirect-link:hover {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
-  font-weight: 600;
+}
+.page-outer  .btn-style {
+  font-weight: initial;
+}
+.page-outer
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+   background-color: #06c;
+}
+.page-outer 
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  border: 1px solid #06c;
+  color: #06c;
+}
+.dropdown-menu.show {
+  border: 1px solid #06c;
+  padding: 0;
+}
+.dropdown-item {
+  color: #06c;
+  padding: 5px 15px;
+}
+.dropdown-item:active, .dropdown-item:focus,
+.dropdown-item:hover {
+  color: #fff;
+  background-color: #06c;
 }

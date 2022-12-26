@@ -46,8 +46,8 @@ export class ToolsChain extends Component {
                     </label>
                   </Box>
                   <Stack spacing={2} direction="row">
-                    <Button variant="contained">Create</Button>
-                    <Button variant="outlined">Cancel</Button>
+                    <Button variant="contained" className='btn-style'>Create</Button>
+                    <Button variant="outlined" className='btn-style'>Cancel</Button>
                   </Stack>
                 </div>
               </Tab>
@@ -93,12 +93,12 @@ export class ToolsChain extends Component {
                   </label>
                 </Box>
                 <label>
-                  <span className='col-md-2'>Subscribe Pullrequest Event:</span>
-                  <Checkbox {...label} className='col-md-3' />
+                  <span className='col-md-3'>Subscribe Pullrequest Event:</span>
+                  <input className="form-check-input" type="checkbox" value="" ></input>
                 </label>
                 <Stack spacing={2} direction="row">
-                  <Button variant="contained">Add</Button>
-                  <Button variant="outlined">Cancel</Button>
+                  <Button variant="contained" className='btn-style'>Add</Button>
+                  <Button variant="outlined" className='btn-style'>Cancel</Button>
                 </Stack>
                 </div>
               </Tab>
