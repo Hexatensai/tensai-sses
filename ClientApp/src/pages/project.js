@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import { masterData } from "../datamodel/data";
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
+import { Link } from 'react-router-dom';
+import '../custom.css';
 
 function Project() {
     const [projects, setProjects] = useState([]);
@@ -16,7 +19,9 @@ function Project() {
     return ( 
         <div className='page-outer'>
           <div className='env-btn-outer'>
-            <Button variant="contained" className='btn-style'>NEW PROJECT</Button>
+          <Link to="/project" className='link' >
+            <Button variant="contained">NEW PROJECT</Button>
+            </Link>
           </div>
             <table className="table table-striped">
             <thead>
