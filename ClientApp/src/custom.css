@@ -107,6 +107,9 @@ button {
 .page-outer
 .css-sghohy-MuiButtonBase-root-MuiButton-root {
    background-color: #06c;
+   font-weight: initial;
+   height: 2.3rem;
+   line-height: initial;
 }
 .page-outer 
 .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
@@ -128,4 +131,31 @@ button {
 }
 .link{
   text-decoration: none;
+}
+.new-project-wrap .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 0.6rem;
+}
+.css-19l4syt-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  height: 2.68rem !important;
+  margin-top: 0.5rem;
+}
+.new-project-wrap .css-2ulfj5-MuiTypography-root {
+  font-size: 1rem;
+}
+.new-project-wrap .css-1pgc0kz-MuiFormControl-root-MuiTextField-root {
+  margin-top: 0.5rem;
+}
+.new-project-wrap {
+  padding-bottom: 3.5rem;
+}
+.css-56cttj {
+  margin: 0 0 16px 0  !important;
+  width: 100% !important;
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  max-width: 800px !important;
+  width: 100%;
+}
+.dialog-wrap .css-19l4syt-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  width: 100% !important;
 }

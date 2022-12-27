@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
@@ -20,17 +16,7 @@ const MenuProps = {
 };
 
 
-// function getStyles(name, personName, theme) {
-//   return {
-//     fontWeight:
-//       personName.indexOf(name) === -1
-//         ? theme.typography.fontWeightRegular
-//         : theme.typography.fontWeightMedium,
-//   };
-// }
-
 export default function Tdropdown({fieldName,name, options, setFormData}) {
-  const theme = useTheme();
 
   const handleChange = (e) => {
     setFormData(prevFormData => {
@@ -44,18 +30,15 @@ export default function Tdropdown({fieldName,name, options, setFormData}) {
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
-          // value={personName}
           onChange={handleChange}
           sx={{height: "2.8rem", width: "30rem" }}
           MenuProps={MenuProps}
           name = {name}
-        //   placeholder={"Select"}
         >
           {options?.map((option) => (
             <MenuItem
               key={option}
               value={option}
-              // style={getStyles(option, personName, theme)}
             >
               {option}
             </MenuItem>

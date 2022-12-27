@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
-import { masterData } from "../datamodel/data";
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
@@ -42,7 +41,7 @@ function Project() {
                     <td>{data.scm_tool}</td>
                     <td>
                     {(() => {
-                    if (data.deploy == true) {
+                    if (data.deploy === true) {
                       return (
                         <div>Opted</div>
                       )

@@ -68,7 +68,7 @@ export default function BuildandDeployModal({open, setOpen}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Build Application
         </BootstrapDialogTitle>
-        <DialogContent dividers>
+        <DialogContent className='dialog-wrap' dividers>
           <Typography gutterBottom>
             Application Repository:
           <Tdropdown/>

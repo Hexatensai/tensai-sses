@@ -15,8 +15,7 @@ const style = {
   width: '100%',
   maxWidth: 200,
   bgcolor: '#06c',
-  color: '#fff',
-  height: '100vh'
+  color: '#fff'
 };
 
 export default function MenuItems() {

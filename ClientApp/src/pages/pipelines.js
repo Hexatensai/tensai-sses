@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { masterData } from "../datamodel/data";
 import Button from '@mui/material/Button';
 import HistoryIcon from '@mui/icons-material/History';
 import InfoIcon from '@mui/icons-material/Info';
-import { Link } from 'react-router-dom';
 import BuildandDeployModal from '../components/buildAndDeploy/BuildandDeployModal';
 
 
@@ -28,7 +27,7 @@ import BuildandDeployModal from '../components/buildAndDeploy/BuildandDeployModa
             {masterData.map((data, key) => {
                return (
                 <tr key={key}>
-                    <td>{data.environmentName}</td>
+                    <td>{data.name}</td>
                     <td>{ data.description}</td>
                     <td>
                     <Button variant="contained" color="primary" onClick={handleClickOpen}>

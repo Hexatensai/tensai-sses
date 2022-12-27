@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { Typography } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
 import {FormGroup, FormControlLabel, Checkbox, Box} from '@mui/material';
 
 const TCheckBox = ({fieldName, label, name, setFormData}) => {
