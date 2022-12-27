@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import NewEnvironment from '../Modals/NewEnvironment';
 
 
 function Environments() {
@@ -15,10 +16,16 @@ function Environments() {
     useEffect(() => {
       fetchData()
     }, [])
+
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
     return ( 
         <div>
           <div className='env-btn-outer'>
-            <Button variant="contained" className='btn-style'>New Environment</Button>
+            <Button variant="contained" className='btn-style' onClick={handleClickOpen}>New Environment</Button>
           </div>
             <table className="table table-striped">
             <thead>
@@ -36,7 +43,8 @@ function Environments() {
                 <td>{data.name}</td>
                 <td>{ data.description}</td>
                 <td>
-                <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary">
+                <Button variant="contained" className='btn-style' startIcon={<EditIcon />}
+                color="primary">
                   Edit
                 </Button>
                 </td>
@@ -50,6 +58,7 @@ function Environments() {
               })}
             </tbody>
             </table>
+            <NewEnvironment open={open} setOpen={setOpen} />
         </div>
     );
 

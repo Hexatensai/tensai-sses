@@ -3,7 +3,7 @@ import { masterData } from "../datamodel/data";
 import Button from '@mui/material/Button';
 import HistoryIcon from '@mui/icons-material/History';
 import InfoIcon from '@mui/icons-material/Info';
-import BuildandDeployModal from '../components/buildAndDeploy/BuildandDeployModal';
+import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
 
 
     const Pipelines =()=>{

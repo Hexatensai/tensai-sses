@@ -4,10 +4,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import '../custom.css';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export class ToolsChain extends Component {
   static displayName = ToolsChain.name;
