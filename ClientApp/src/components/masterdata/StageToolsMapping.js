@@ -4,10 +4,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { masterData } from "../../datamodel/data";
 import NewTool from '../Modals/NewTool';
+import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
 
 
   function StageToolsMapping() {
     const [stageTools, setStageTools] = useState([]);
+    const [edit, setEdit] = useState(false);
   
       const fetchData = () => {
        return fetch("https://52.146.8.157:7244/api/StageTools")
@@ -22,6 +24,10 @@ import NewTool from '../Modals/NewTool';
       const handleClickOpen = () => {
         setOpen(true);
       };
+
+      const handleChange =()=>{
+        setEdit(true);
+      }
 
     return ( 
       <div>
@@ -48,7 +54,7 @@ import NewTool from '../Modals/NewTool';
               <td>Maven3</td>
               <td>{ data.description}</td>
               <td>
-              <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary">
+              <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary" onClick={handleChange}>
                 Edit
               </Button>
               </td>
@@ -63,6 +69,7 @@ import NewTool from '../Modals/NewTool';
           </tbody>
           </table>
           <NewTool open={open} setOpen={setOpen} />
+          <StageToolsMappingEdits edit={edit} setEdit={setEdit} />
       </div>
     );
 }

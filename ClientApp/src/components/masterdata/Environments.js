@@ -3,10 +3,12 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import NewEnvironment from '../Modals/NewEnvironment';
+import EnvironmentEdits from '../Modals/EnvironmentEdits';
 
 
 function Environments() {
   const [environments, setEnvironments] = useState([]);
+  const[edit, setEdit] = useState(false);
 
     const fetchData = () => {
      return fetch("https://52.146.8.157:7244/api/environments")
@@ -17,9 +19,15 @@ function Environments() {
       fetchData()
     }, [])
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
       setOpen(true);
+    };
+
+   
+    const handleChange = () =>{
+      setEdit(true);
+      console.log("Clicked");
     };
 
     return ( 
@@ -44,7 +52,7 @@ function Environments() {
                 <td>{ data.description}</td>
                 <td>
                 <Button variant="contained" className='btn-style' startIcon={<EditIcon />}
-                color="primary">
+                color="primary" onClick={handleChange}>
                   Edit
                 </Button>
                 </td>
@@ -59,6 +67,7 @@ function Environments() {
             </tbody>
             </table>
             <NewEnvironment open={open} setOpen={setOpen} />
+            <EnvironmentEdits edit={edit} setEdit={setEdit} />
         </div>
     );
 

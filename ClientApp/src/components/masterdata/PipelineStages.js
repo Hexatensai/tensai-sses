@@ -3,9 +3,12 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import NewStage from '../Modals/NewStage';
+import PipelineStagesEdits from '../Modals/PipelinesStagesEdits';
 
 function PipelineStages() {
   const [pipelineStages, setPipelineStages] = useState([]);
+  const [edit, setEdit] = useState(false);
+
 
     const fetchData = () => {
      return fetch("https://52.146.8.157:7244/api/PipelineStages/")
@@ -15,6 +18,10 @@ function PipelineStages() {
     useEffect(() => {
       fetchData()
     }, [])
+
+    const handleChange =()=>{
+      setEdit(true);
+    }
 
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -42,7 +49,7 @@ function PipelineStages() {
                 <td>{data.name}</td>
                 <td>{ data.description}</td>
                 <td>
-                <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary">
+                <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary" onClick={handleChange}>
                   Edit
                 </Button>
                 </td>
@@ -57,6 +64,7 @@ function PipelineStages() {
             </tbody>
             </table>
             <NewStage open={open} setOpen={setOpen} />
+            <PipelineStagesEdits edit={edit} setEdit={setEdit}/>
         </div>
     );
 }
