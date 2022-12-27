@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -8,11 +8,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Tdropdown from '../tensaiDropdown/Tdropdown';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -68,21 +67,50 @@ export default function BuildandDeployModal({open, setOpen}) {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Build Application
         </BootstrapDialogTitle>
-        <DialogContent className='dialog-wrap build-deploy' dividers>
-          <Typography gutterBottom>
-            Application Repository:
-          <Tdropdown/>
-          </Typography>
-          <Typography gutterBottom>
-            Branch:
-          <Tdropdown/>
-          </Typography>
-          <Typography gutterBottom>
-            Environment:
-          <Tdropdown/>
-          </Typography>
-        Release Candidate:
-        <Checkbox {...label} />
+        <DialogContent className='dialog-wrap toolschain-outer' dividers>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <label>
+                <span className='col-md-3'>Application Repository:</span>
+                <TextField className='col-md-6' id="outlined-basic" defaultValue="123" variant="outlined" />
+              </label>
+            </Box>
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <label>
+              <span className='col-md-3'>Branch:</span>
+              <Tdropdown/>
+            </label>
+          </Box>
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <label>
+              <span className='col-md-3'>Environment:</span>
+              <Tdropdown/>
+            </label>
+          </Box>
+          <label>
+            <span className='col-md-3'>Release Candidate:</span>
+            <input className="form-check-input" type="checkbox" value="" ></input>
+          </label>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="primary" autoFocus onClick={handleClose}>

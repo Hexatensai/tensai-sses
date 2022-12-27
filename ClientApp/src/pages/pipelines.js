@@ -1,5 +1,4 @@
-import React from 'react';
-import { masterData } from "../datamodel/data";
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import HistoryIcon from '@mui/icons-material/History';
 import InfoIcon from '@mui/icons-material/Info';
@@ -11,6 +10,16 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
       const handleClickOpen = () => {
         setOpen(true);
       };
+      const [projects, setProjects] = useState([]);
+
+      const fetchData = () => {
+      return fetch("https://52.146.8.157:7244/api/Project/")
+        .then((response) => response.json())
+        .then((data) => setProjects(data));
+      }
+      useEffect(() => {
+        fetchData()
+      }, [])
       return ( 
         <div className='page-outer'>
             <table className="table table-striped">
@@ -24,7 +33,7 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
                 </tr>
             </thead>
             <tbody>
-            {masterData.map((data, key) => {
+            {projects.map((data, key) => {
                return (
                 <tr key={key}>
                     <td>{data.name}</td>

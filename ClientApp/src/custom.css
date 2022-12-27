@@ -92,7 +92,7 @@ button {
   display: flex;
   max-width: initial;
   padding: 0;
-  min-height: 600px;
+  min-height: 100vh;
 }
 .page-outer {
   margin-top: 1.5rem !important;
@@ -157,9 +157,6 @@ button {
 }
 .css-56cttj {
   margin: 0 0 16px 0  !important;
-}
-.build-deploy .css-56cttj {
-  width: 100% !important
 }
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   max-width: 800px !important;
