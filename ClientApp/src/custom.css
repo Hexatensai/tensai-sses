@@ -30,10 +30,12 @@ button {
 .toolschain-outer label {
   display: flex;
   width: 100%;
-  font-weight: 700;
   font-size: 17px;
   align-items: center;
   margin-bottom: 2rem !important;
+}
+.toolschain-outer label span {
+  font-weight: 700;
 }
 .toolschain-outer .css-xn6ruc>:not(style) {
   margin: 0;
@@ -44,8 +46,12 @@ button {
   height: 0.8rem;
 }
 .toolschain-outer .css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
-.toolschain-outer .form-check-input {
+.toolschain-outer .form-check-input,
+.toolschain-outer .css-56cttj  {
   margin-left: 2rem !important;
+}
+.dialog-wrap .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width: 480px;
 }
 .active{
   border-bottom:2px solid #06c;
@@ -151,7 +157,9 @@ button {
 }
 .css-56cttj {
   margin: 0 0 16px 0  !important;
-  width: 100% !important;
+}
+.build-deploy .css-56cttj {
+  width: 100% !important
 }
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   max-width: 800px !important;
@@ -160,3 +168,4 @@ button {
 .dialog-wrap .css-19l4syt-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   width: 100% !important;
 }
+

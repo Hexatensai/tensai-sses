@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { masterData } from "../../datamodel/data";
+import NewTool from '../Modals/NewTool';
 
 
   function StageToolsMapping() {
@@ -16,10 +17,16 @@ import { masterData } from "../../datamodel/data";
       useEffect(() => {
         fetchData()
       }, [])
+
+      const [open, setOpen] = React.useState(false);
+      const handleClickOpen = () => {
+        setOpen(true);
+      };
+
     return ( 
       <div>
         <div className='env-btn-outer'>
-          <Button variant="contained" className='btn-style'>NEW TOOL</Button>
+          <Button variant="contained" className='btn-style' onClick={handleClickOpen}>NEW TOOL</Button>
         </div>
           <table className="table table-striped">
           <thead>
@@ -55,6 +62,7 @@ import { masterData } from "../../datamodel/data";
             })}
           </tbody>
           </table>
+          <NewTool open={open} setOpen={setOpen} />
       </div>
     );
 }

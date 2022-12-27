@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import NewStage from '../Modals/NewStage';
 
 function PipelineStages() {
   const [pipelineStages, setPipelineStages] = useState([]);
@@ -14,10 +15,16 @@ function PipelineStages() {
     useEffect(() => {
       fetchData()
     }, [])
+
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
     return ( 
         <div>
           <div className='env-btn-outer'>
-          <Button variant="contained" className='btn-style'>NEW STAGE</Button>
+          <Button variant="contained" className='btn-style' onClick={handleClickOpen}>NEW STAGE</Button>
           </div>
           <table className="table table-striped">
             <thead>
@@ -49,6 +56,7 @@ function PipelineStages() {
               })}
             </tbody>
             </table>
+            <NewStage open={open} setOpen={setOpen} />
         </div>
     );
 }

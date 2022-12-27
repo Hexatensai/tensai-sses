@@ -8,11 +8,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
-import Tdropdown from '../tensaiDropdown/Tdropdown';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -66,27 +64,39 @@ export default function BuildandDeployModal({open, setOpen}) {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Build Application
+        New Stage
         </BootstrapDialogTitle>
-        <DialogContent className='dialog-wrap build-deploy' dividers>
-          <Typography gutterBottom>
-            Application Repository:
-          <Tdropdown/>
-          </Typography>
-          <Typography gutterBottom>
-            Branch:
-          <Tdropdown/>
-          </Typography>
-          <Typography gutterBottom>
-            Environment:
-          <Tdropdown/>
-          </Typography>
-        Release Candidate:
-        <Checkbox {...label} />
+        <DialogContent className='dialog-wrap toolschain-outer' dividers>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <label>
+            <span className='col-md-3'>Stage:</span>
+            <TextField className='col-md-6' id="outlined-basic" label="Stage Name" variant="outlined" />
+          </label>
+        </Box>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <label>
+            <span className='col-md-3'>Description:</span>
+            <TextField className='col-md-6' id="outlined-basic" label="Description" variant="outlined" />
+          </label>
+        </Box>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="primary" autoFocus onClick={handleClose}>
-            Build
+            Save
           </Button>
         </DialogActions>
       </BootstrapDialog>
