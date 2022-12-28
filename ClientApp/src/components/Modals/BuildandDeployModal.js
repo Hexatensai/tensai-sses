@@ -11,6 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Tdropdown from '../tensaiDropdown/Tdropdown';
+import { branch, environment } from '../../Constant/BuildandDeployConstant';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -50,7 +51,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({open, setOpen}) {
+export default function BuildandDeployModal({open, setOpen, name}) {
 
 
   const handleClose = () => {
@@ -78,7 +79,7 @@ export default function BuildandDeployModal({open, setOpen}) {
             >
               <label>
                 <span className='col-md-3'>Application Repository:</span>
-                <TextField className='col-md-6' id="outlined-basic" defaultValue="123" variant="outlined" />
+                <TextField className='col-md-6' id="outlined-basic" defaultValue="TensaiGitHub (git@github.com:unique-tensai/sample-mavenapp2.git)" disabled="true" variant="outlined"/>
               </label>
             </Box>
           <Box
@@ -91,7 +92,7 @@ export default function BuildandDeployModal({open, setOpen}) {
           >
             <label>
               <span className='col-md-3'>Branch:</span>
-              <Tdropdown/>
+              <Tdropdown options={branch}/>
             </label>
           </Box>
           <Box
@@ -104,7 +105,7 @@ export default function BuildandDeployModal({open, setOpen}) {
           >
             <label>
               <span className='col-md-3'>Environment:</span>
-              <Tdropdown/>
+              <Tdropdown options={environment}/>
             </label>
           </Box>
           <label>
