@@ -6,7 +6,7 @@ import { dependencyCheck } from "../Constant/newProjectConstant";
 import { sast } from "../Constant/newProjectConstant";
 import { dast } from "../Constant/newProjectConstant";
 import { build } from "../Constant/newProjectConstant";
-import { applicationCodeRepository } from "../Constant/newProjectConstant";
+import { applicationCodeRepository, category } from "../Constant/newProjectConstant";
 import { Link } from 'react-router-dom';
 import TTextField  from "../components/TensaitextField/TTextField";
 import TCheckBox from "../components/TensaiCheckBox/TCheckBox";
@@ -29,6 +29,7 @@ const NewProject=()=>{
                     <Box component={"form"}>
                     <p>Please select the right components that matches your application release requirements</p>
                     <TTextField fieldName={"Application/Project"}  setFormData={setFormData} name={"projectName"} />
+                    <Tdropdown fieldName={"Category"} options={category} name={"codeRepo"} setFormData={setFormData}/>
                     <Tdropdown fieldName={"Application Code Repository"} options={applicationCodeRepository} name={"codeRepo"} setFormData={setFormData}/>
                     <Tdropdown fieldName={"Build"} options={build} name={"build"} setFormData={setFormData}/>
                     <Tdropdown fieldName={"Static Code Analysis"} options={staticCodeAnalysis} name={"staticCode"} setFormData={setFormData}/>

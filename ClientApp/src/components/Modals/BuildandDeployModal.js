@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -51,7 +51,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({open, setOpen, name}) {
+export default function BuildandDeployModal({open, setOpen, rowData}) {
 
 
   const handleClose = () => {
@@ -77,10 +77,11 @@ export default function BuildandDeployModal({open, setOpen, name}) {
               noValidate
               autoComplete="off"
             >
-              <label>
-                <span className='col-md-3'>Application Repository:</span>
-                <TextField className='col-md-6' id="outlined-basic" defaultValue="TensaiGitHub (git@github.com:unique-tensai/sample-mavenapp2.git)" disabled="true" variant="outlined"/>
-              </label>
+      <label >
+        <span className='col-md-3'>Application Repository:</span>
+        <TextField className='col-md-6' id="outlined-basic" variant="outlined" defaultValue={rowData?.description} />
+      </label>
+    
             </Box>
           <Box
             component="form"

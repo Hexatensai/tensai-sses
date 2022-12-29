@@ -23,3 +23,11 @@ export const build=[
 export const applicationCodeRepository=[
     "Tensai /   github.com"
 ]
+
+export const category=[
+    "SaaS",
+    "Cloud Native",
+     "Traditional",
+    "COTS",
+     "Mobile"
+]

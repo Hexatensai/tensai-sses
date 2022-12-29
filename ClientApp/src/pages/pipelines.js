@@ -12,6 +12,8 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
       };
       const [projects, setProjects] = useState([]);
 
+      const [rowData, setRowData] = useState(null)
+
       const fetchData = () => {
       return fetch("https://52.146.8.157:7244/api/Project/")
         .then((response) => response.json())
@@ -35,7 +37,7 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
             <tbody>
             {projects.map((data, key) => {
                return (
-                <tr key={key}>
+                <tr key={key} onClick={()=> setRowData(data)}>
                     <td>{data.name}</td>
                     <td>{ data.description}</td>
                     <td>
@@ -50,7 +52,7 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
               })}
             </tbody>
             </table>
-            <BuildandDeployModal open={open} setOpen={setOpen} />
+            <BuildandDeployModal open={open} setOpen={setOpen} rowData={rowData}/>
                    </div>
     );
   }
