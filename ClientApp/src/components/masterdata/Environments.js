@@ -11,7 +11,7 @@ function Environments() {
   const[edit, setEdit] = useState(false);
 
     const fetchData = () => {
-     return fetch("https://52.146.8.157:7244/api/environments")
+     return fetch("https://52.146.8.157:7246/api/environments/")
        .then((response) => response.json())
        .then((data) => setEnvironments(data));
     }

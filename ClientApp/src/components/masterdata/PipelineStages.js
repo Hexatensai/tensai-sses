@@ -11,7 +11,7 @@ function PipelineStages() {
 
 
     const fetchData = () => {
-     return fetch("https://52.146.8.157:7244/api/PipelineStages/")
+     return fetch("https://52.146.8.157:7246/api/pipelinestages/")
        .then((response) => response.json())
        .then((data) => setPipelineStages(data));
     }

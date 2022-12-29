@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
+import NewTool from '../Modals/NewTool';
 
 
     function SupportedTools() {
       const [supportedTools, setSupportedTools] = useState([]);
     
         const fetchData = () => {
-         return fetch("https://52.146.8.157:7244/api/SupportTools/")
+         return fetch("https://52.146.8.157:7246/api/supporttools/")
            .then((response) => response.json())
            .then((data) => setSupportedTools(data));
         }
         useEffect(() => {
           fetchData()
         }, [])
+
+        const [open, setOpen] = React.useState(false);
+        const handleClickOpen = () => {
+          setOpen(true);
+        };  
     return ( 
         <div>
           <div className='env-btn-outer'>
-            <Button variant="contained" className='btn-style'>NEW TOOL</Button>
+            <Button variant="contained" className='btn-style' onClick={handleClickOpen}>NEW TOOL</Button>
           </div>
             <table className="table table-striped">
             <thead>
@@ -36,6 +42,7 @@ import Button from '@mui/material/Button';
               })}
             </tbody>
             </table>
+            <NewTool open={open} setOpen={setOpen} />
         </div>
     );
 

@@ -10,7 +10,6 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Tdropdown from '../tensaiDropdown/Tdropdown';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -50,9 +49,9 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({open, setOpen}) {
+export default function NewTool({open, setOpen}) {
 
-
+   
   const handleClose = () => {
     setOpen(false);
   };
@@ -77,34 +76,8 @@ export default function BuildandDeployModal({open, setOpen}) {
           autoComplete="off"
         >
           <label>
-            <span className='col-md-3'>Stage:</span>
-            <Tdropdown className='col-md-6'/>
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
             <span className='col-md-3'>Tool:</span>
-            <Tdropdown className='col-md-6'/>
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Name:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Name" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" label="Tool Name" variant="outlined" />
           </label>
         </Box>
         <Box
@@ -118,58 +91,6 @@ export default function BuildandDeployModal({open, setOpen}) {
           <label>
             <span className='col-md-3'>Description:</span>
             <TextField className='col-md-6' id="outlined-basic" label="Description" variant="outlined" />
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Credential Type:</span>
-            <Tdropdown/>
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Access URL:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="URL" variant="outlined" />
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>User:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Id" variant="outlined" />
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Secret:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Secret" variant="outlined" />
           </label>
         </Box>
         </DialogContent>

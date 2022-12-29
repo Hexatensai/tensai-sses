@@ -50,7 +50,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({edit, setEdit}) {
+export default function StageToolEdit({edit, setEdit}) {
 
 
   const handleClose = () => {

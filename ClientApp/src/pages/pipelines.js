@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import HistoryIcon from '@mui/icons-material/History';
-import InfoIcon from '@mui/icons-material/Info';
 import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
 
 
@@ -31,7 +30,6 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
                 <th scope="col">Description</th>
                 <th scope="col">Action</th>
                 <th scope="col">History</th>
-                <th scope="col">Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +44,6 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
                     </Button>
                     </td>
                     <td><HistoryIcon color="primary" fontSize="large"/></td>
-                    <td><InfoIcon color="primary" fontSize="large"/></td>
                 </tr>
                  );
               })}
