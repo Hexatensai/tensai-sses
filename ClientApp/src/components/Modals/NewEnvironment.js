@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -49,13 +49,36 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({open, setOpen}) {
+export default function NewEnvironment({open, setOpen}) {
 
 
   const handleClose = () => {
     setOpen(false);
   };
-
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+let handleSave = async (e) => {
+  e.preventDefault();
+  try {
+    let res = await fetch("https://52.146.8.157:7244/api/environments/", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        description: description,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    let resJson = await res.json();
+    if (res.status === 200) {
+      setName("");
+      setDescription("");
+    } 
+  } catch (err) {
+    console.log(err);
+  }
+};
   return (
     <div>
       <BootstrapDialog
@@ -64,38 +87,44 @@ export default function BuildandDeployModal({open, setOpen}) {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Modify Environment Details
+        New Environment
         </BootstrapDialogTitle>
         <DialogContent className='dialog-wrap toolschain-outer' dividers>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Environment Name:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Name" variant="outlined" />
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Description:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Description" variant="outlined" />
-          </label>
-        </Box>
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <label>
+              <span className='col-md-3'>Environment Name:</span>
+              <TextField className='col-md-6' id="outlined-basic" label="Name" 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              variant="outlined" />
+            </label>
+          </Box>
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <label>
+              <span className='col-md-3'>Description:</span>
+              <TextField className='col-md-6' id="outlined-basic" label="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              variant="outlined" />
+            </label>
+          </Box>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" color="primary" autoFocus onClick={handleClose}>
+          <Button variant="contained" color="primary" autoFocus onClick={handleSave}>
             Save
           </Button>
         </DialogActions>

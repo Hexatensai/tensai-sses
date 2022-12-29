@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -49,7 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({edit, setEdit}) {
+export default function EnvironmentEdit({edit, setEdit, rowData}) {
 
   const handleClose = () => {
     setEdit(false);
@@ -66,32 +66,32 @@ export default function BuildandDeployModal({edit, setEdit}) {
         Modify Environment Details
         </BootstrapDialogTitle>
         <DialogContent className='dialog-wrap toolschain-outer' dividers>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Environment Name:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="PROD" variant="outlined" />
-          </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <label>
-            <span className='col-md-3'>Description:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="Production Environment" variant="outlined" />
-          </label>
-        </Box>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <label>
+                <span className='col-md-3'>Environment Name:</span>
+                <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.name} variant="outlined" />
+              </label>
+            </Box>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <label>
+                <span className='col-md-3'>Description:</span>
+                <TextField className='col-md-6' id="outlined-basic" defaultValue={ rowData?.description} variant="outlined" />
+              </label>
+            </Box>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="primary" autoFocus onClick={handleClose}>

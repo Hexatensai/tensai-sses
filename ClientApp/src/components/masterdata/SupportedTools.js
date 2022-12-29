@@ -7,7 +7,7 @@ import NewTool from '../Modals/NewTool';
       const [supportedTools, setSupportedTools] = useState([]);
     
         const fetchData = () => {
-         return fetch("https://52.146.8.157:7246/api/supporttools/")
+         return fetch("https://52.146.8.157:7244/api/supporttools/")
            .then((response) => response.json())
            .then((data) => setSupportedTools(data));
         }

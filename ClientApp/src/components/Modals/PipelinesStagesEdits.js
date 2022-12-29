@@ -49,7 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function PipelineStageEdit({edit, setEdit}) {
+export default function PipelineStageEdit({edit, setEdit, rowData}) {
 
   const handleClose = () => {
     setEdit(false);
@@ -76,7 +76,7 @@ export default function PipelineStageEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="CodeBuild" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.name} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -89,7 +89,7 @@ export default function PipelineStageEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Description:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="Build Application Code" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.description} variant="outlined" />
           </label>
         </Box>
         </DialogContent>

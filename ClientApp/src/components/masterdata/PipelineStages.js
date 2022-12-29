@@ -8,10 +8,11 @@ import PipelineStagesEdits from '../Modals/PipelinesStagesEdits';
 function PipelineStages() {
   const [pipelineStages, setPipelineStages] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [rowData, setRowData] = useState(null)
 
 
     const fetchData = () => {
-     return fetch("https://52.146.8.157:7246/api/pipelinestages/")
+     return fetch("https://52.146.8.157:7244/api/pipelinestages/")
        .then((response) => response.json())
        .then((data) => setPipelineStages(data));
     }
@@ -45,7 +46,7 @@ function PipelineStages() {
             <tbody>
             {pipelineStages.map((data, key) => {
                return (
-                <tr key={key}>
+                <tr key={key} onClick={()=> setRowData(data)}>
                 <td>{data.name}</td>
                 <td>{ data.description}</td>
                 <td>
@@ -64,7 +65,7 @@ function PipelineStages() {
             </tbody>
             </table>
             <NewStage open={open} setOpen={setOpen} />
-            <PipelineStagesEdits edit={edit} setEdit={setEdit}/>
+            <PipelineStagesEdits edit={edit} setEdit={setEdit} rowData={rowData}/>
         </div>
     );
 }

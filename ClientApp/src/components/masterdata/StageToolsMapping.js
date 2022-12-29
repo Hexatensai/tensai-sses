@@ -9,9 +9,10 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
   function StageToolsMapping() {
     const [stageTools, setStageTools] = useState([]);
     const [edit, setEdit] = useState(false);
+    const [rowData, setRowData] = useState(null)
   
       const fetchData = () => {
-       return fetch("https://52.146.8.157:7246/api/stagetool/")
+       return fetch("https://52.146.8.157:7244/api/stagetool/")
          .then((response) => response.json())
          .then((data) => setStageTools(data));
       }
@@ -47,7 +48,7 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
           <tbody>
           {stageTools.map((data, key) => {
               return (
-              <tr key={key}>
+              <tr key={key} onClick={()=> setRowData(data)}>
               <td>Maven3</td>
               <td>Maven</td>
               <td>{data.name}</td>
@@ -68,7 +69,7 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
           </tbody>
           </table>
           <NewStageTool open={open} setOpen={setOpen} />
-          <StageToolsMappingEdits edit={edit} setEdit={setEdit} />
+          <StageToolsMappingEdits edit={edit} setEdit={setEdit} rowData={rowData}/>
       </div>
     );
 }

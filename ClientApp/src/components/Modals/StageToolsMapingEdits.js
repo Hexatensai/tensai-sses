@@ -50,7 +50,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function StageToolEdit({edit, setEdit}) {
+export default function StageToolEdit({edit, setEdit, rowData}) {
 
 
   const handleClose = () => {
@@ -78,7 +78,7 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="CodeBuild" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.pipelinestages} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -91,7 +91,7 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Tool:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="Maven" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.supporttools} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -104,7 +104,7 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Name:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="Maven3" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.name} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -117,17 +117,8 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Description:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue="Maven3 for sample app" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.description} variant="outlined" />
           </label>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
         </Box>
         <Box
           component="form"
@@ -139,7 +130,7 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Access URL:</span>
-            <TextField className='col-md-6' id="outlined-basic" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.access_url} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -152,7 +143,7 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>User:</span>
-            <TextField className='col-md-6' id="outlined-basic" variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.cred_user} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -165,7 +156,7 @@ export default function StageToolEdit({edit, setEdit}) {
         >
           <label>
             <span className='col-md-3'>Secret:</span>
-            <TextField className='col-md-6' id="outlined-basic"  variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.cred_secret} variant="outlined" />
           </label>
           <p>Leave the fields (<b>AccessURL, User and Secret</b>) blank or as it is, if you do not want to change</p>
         </Box>

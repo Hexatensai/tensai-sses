@@ -9,9 +9,10 @@ import EnvironmentEdits from '../Modals/EnvironmentEdits';
 function Environments() {
   const [environments, setEnvironments] = useState([]);
   const[edit, setEdit] = useState(false);
+  const [rowData, setRowData] = useState(null)
 
-    const fetchData = () => {
-     return fetch("https://52.146.8.157:7246/api/environments/")
+  const fetchData = () => {
+     return fetch("https://52.146.8.157:7244/api/environments/")
        .then((response) => response.json())
        .then((data) => setEnvironments(data));
     }
@@ -47,9 +48,9 @@ function Environments() {
             <tbody>
             {environments.map((data, key) => {
                return (
-                <tr key={key}>
+                <tr key={key} onClick={()=> setRowData(data)}>
                 <td>{data.name}</td>
-                <td>{ data.description}</td>
+                <td>{data.description}</td>
                 <td>
                 <Button variant="contained" className='btn-style' startIcon={<EditIcon />}
                 color="primary" onClick={handleChange}>
@@ -67,7 +68,7 @@ function Environments() {
             </tbody>
             </table>
             <NewEnvironment open={open} setOpen={setOpen} />
-            <EnvironmentEdits edit={edit} setEdit={setEdit} />
+            <EnvironmentEdits edit={edit} setEdit={setEdit} rowData={rowData}/>
         </div>
     );
 
