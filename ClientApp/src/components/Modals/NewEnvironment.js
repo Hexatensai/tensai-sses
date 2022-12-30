@@ -57,28 +57,29 @@ export default function NewEnvironment({open, setOpen}) {
   };
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-let handleSave = async (e) => {
-  e.preventDefault();
-  try {
-    let res = await fetch("https://52.146.8.157:7244/api/environments/", {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
-        description: description,
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    let resJson = await res.json();
-    if (res.status === 200) {
-      setName("");
-      setDescription("");
-    } 
-  } catch (err) {
-    console.log(err);
-  }
-};
+  let handleSave = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("https://52.146.8.157:7244/api/environments/", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          description: description,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setName("");
+        setDescription("");
+      } 
+    } catch (err) {
+      console.log(err);
+    }
+    setOpen(false);
+  };
   return (
     <div>
       <BootstrapDialog
