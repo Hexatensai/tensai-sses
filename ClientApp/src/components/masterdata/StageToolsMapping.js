@@ -8,16 +8,31 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
 
   function StageToolsMapping() {
     const [stageTools, setStageTools] = useState([]);
+    const [pipelineStages, setPipelineStages] = useState([]);
+    const [supportedTools, setSupportedTools] = useState([]);
     const [edit, setEdit] = useState(false);
-    const [rowData, setRowData] = useState(null)
+    const [rowData, setRowData] = useState(null);
+    const [rowStage, setRowStage] = useState(null)
   
       const fetchData = () => {
        return fetch("https://52.146.8.157:7244/api/stagetool/")
          .then((response) => response.json())
          .then((data) => setStageTools(data));
       }
+      const fetchDataStage = () => {
+        return fetch("https://52.146.8.157:7244/api/pipelinestages/")
+          .then((response) => response.json())
+          .then((stage) => setPipelineStages(stage));
+       }
+      const fetchDataTool = () => {
+        return fetch("https://52.146.8.157:7244/api/supporttools/")
+          .then((response) => response.json())
+          .then((tool) => setSupportedTools(tool));
+      }
       useEffect(() => {
         fetchData()
+        fetchDataStage()
+        fetchDataTool()
       }, [])
 
       const [open, setOpen] = React.useState(false);
@@ -47,10 +62,38 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
           </thead>
           <tbody>
           {stageTools.map((data, key) => {
-              return (
-              <tr key={key} onClick={()=> setRowData(data)}>
-              <td>Maven3</td>
-              <td>Maven</td>
+            return (
+            <tr key={key} onClick={()=> setRowData(data)}>
+              <td>
+                {pipelineStages.map((stage, id) => {
+                return (
+                  <div key={id} onClick={()=> setRowStage(stage)}>
+                    {(() => {
+                      if (data.id === stage.id) {
+                        return (
+                          <div>{stage.name}</div>
+                        )
+                      }
+                      })()}
+                  </div>
+                );
+              })}
+              </td>
+              <td>
+              {supportedTools.map((tool, id) => {
+                return (
+                  <div key={id}>
+                    {(() => {
+                      if (data.id === tool.id) {
+                        return (
+                          <div>{tool.name}</div>
+                        )
+                      }
+                      })()}
+                  </div>
+                );
+              })}
+              </td>
               <td>{data.name}</td>
               <td>{ data.description}</td>
               <td>
@@ -69,7 +112,7 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
           </tbody>
           </table>
           <NewStageTool open={open} setOpen={setOpen} />
-          <StageToolsMappingEdits edit={edit} setEdit={setEdit} rowData={rowData}/>
+          <StageToolsMappingEdits edit={edit} setEdit={setEdit} rowData={rowData} rowStage={rowStage}/>
       </div>
     );
 }
