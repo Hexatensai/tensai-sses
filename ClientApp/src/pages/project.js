@@ -6,14 +6,21 @@ import '../custom.css';
 
 function Project() {
     const [projects, setProjects] = useState([]);
+    const [categories, setCategory] = useState([]);
 
     const fetchData = () => {
-     return fetch("https://52.146.8.157:7244/api/Project/")
+     return fetch("https://52.146.8.157:7249/api/Project/")
        .then((response) => response.json())
        .then((data) => setProjects(data));
     }
+    const fetchCategory= () => {
+      return fetch("https://52.146.8.157:7249/api/category/")
+        .then((response) => response.json())
+        .then((data) => setCategory(data));
+     }
     useEffect(() => {
       fetchData()
+      fetchCategory()
     }, [])
     return ( 
         <div className='page-outer'>
@@ -26,7 +33,7 @@ function Project() {
             <thead>
                 <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Description</th>
+                <th scope="col">Category</th>
                 <th scope="col">SCM</th>
                 <th scope="col">Deployment</th>
                 <th scope="col">Modify</th>
@@ -37,7 +44,21 @@ function Project() {
                return (
                 <tr key={key}>
                     <td>{data.name}</td>
-                    <td>{ data.description}</td>
+                    <td>
+                      {categories.map((category, id) => {
+                        return (
+                          <div key={id}>
+                            {(() => {
+                              if (data.id === category.id) {
+                                return (
+                                  <div>{category.name}</div>
+                                )
+                              }
+                              })()}
+                          </div>
+                        );
+                      })}
+                    </td>
                     <td>{data.scm_tool}</td>
                     <td>
                     {(() => {

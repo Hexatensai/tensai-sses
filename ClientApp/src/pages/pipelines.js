@@ -14,7 +14,7 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
       const [rowData, setRowData] = useState(null)
 
       const fetchData = () => {
-      return fetch("https://52.146.8.157:7244/api/Project/")
+      return fetch("https://52.146.8.157:7249/api/Project/")
         .then((response) => response.json())
         .then((data) => setProjects(data));
       }
