@@ -26,7 +26,7 @@ const NewProject=()=>{
     const fetchData = () => {
         return fetch("https://52.146.8.157:7249/api/category/")
           .then((response) => response.json())
-          .then((data) => setCategory(data));
+          .then((category) => setCategory(category));
        }
        const fetchDataStage = () => {
          return fetch("https://52.146.8.157:7244/api/pipelinestages/")
