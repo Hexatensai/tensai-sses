@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -103,8 +103,15 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
       } catch (err) {
         setPutResult(err.message);
       }
+      setEdit(false);
     }
   }
+  
+  const [name, setName] = useState()
+  
+  useEffect(()=> {
+    setName(rowData?.name)
+  },[rowData])
   
   return (
     <div>
@@ -129,7 +136,7 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
             >
               <label>
                 <span className='col-md-3'>Environment Name:</span>
-                <input type="text" className="form-control" ref={put_name} value={rowData?.name} />
+                <input type="text" className="form-control" ref={put_name} value={name} onChange={(e)=> setName(e.target.value)} />
                 {/* <TextField className='col-md-6' id="outlined-basic" ref={put_name} 
                  defaultValue={rowData?.name} variant="outlined" /> */}
               </label>

@@ -43,20 +43,15 @@ const NewProject=()=>{
             fetchDataStage()
             fetchDataTool()
        }, [])
+
         return(
           <div className="page-outer new-project-wrap">
               <Container>
                   <Box component={"form"}>
                   <p>Please select the right components that matches your application release requirements</p>
                   <TTextField fieldName={"Application/Project"}  setFormData={setFormData} name={"projectName"} />
-                  {/* <Tdropdown fieldName={"Category"} options={category} name={"codeRepo"} setFormData={setFormData}/> */}
-                  {categories.map((category, id) => {
-                    return (
-                      <div key={id}>
-                        <Tdropdown fieldName={"Category"} options={category.name} name={"category"} />
-                      </div>
-                     );
-                  })}                
+                  <Tdropdown fieldName={"Category"} options={categories?.map((category) => category.name) || []} name={"codeRepo"} setFormData={setFormData}/>
+                  
                   <div>
                   {pipelineStages.map((stage, id) => {
                     return (
@@ -69,25 +64,19 @@ const NewProject=()=>{
                                 return (
                                   <div key={id}>
                                     {(() => {
-                                    if (stage.id === tool.id) {
+                                    if (stage.id === tool.id) 
                                       return (
                                         <div>
-                                          {tool.name}
-                                          <Tdropdown fieldName={"Application Code Repository"}  name={"codeRepo"} options={tool.name}/> 
+                                          <Tdropdown fieldName={"Application Code Repository"}  name={"codeRepo"}  options={[tool.name]}  />      
                                         </div>
                                       )
-                                    }
                                     })()}
                                   </div>
                                 );
                               })}
                             </div>
                           ) 
-                        }  else {
-                          return (
-                            <Tdropdown fieldName={"Application Code Repository"}  name={"codeRepo"} options="---Not Applicable---" /> 
-                          )
-                        }
+                        }  
                         })()}
                         {(() => {
                         if (stage.name === 'CodeBuild') {
@@ -100,7 +89,9 @@ const NewProject=()=>{
                                     if (stage.id === tool.id) {
                                       return (
                                         <div>
-                                          <Tdropdown fieldName={"Build"} options={tool.name} name={"build"} setFormData={setFormData}/>
+                                          <Tdropdown fieldName={"Build"} name={"build"}   options={[tool.name]}  />
+                                       
+                                         
                                         </div>
                                       )
                                     }
@@ -110,11 +101,7 @@ const NewProject=()=>{
                               })}
                             </div>
                           )
-                        } else {
-                          return (
-                            <Tdropdown fieldName={"Build"}  name={"build"} options="---Not Applicable---" /> 
-                          )
-                        }
+                        } 
                         })()}
                         {(() => {
                         if (stage.name === 'CodeAnalysis') {
@@ -127,7 +114,9 @@ const NewProject=()=>{
                                     if (stage.id === tool.id) {
                                       return (
                                         <div>
-                                          <Tdropdown fieldName={"Static Code Analysis"} options={tool.name} name={"staticCode"}/>
+                                       
+                                          <Tdropdown fieldName={"Static Code Analysis"} name={"staticCode"}  options={[tool.name]}    />
+                                         
                                         </div>
                                       )
                                     }
@@ -137,11 +126,7 @@ const NewProject=()=>{
                               })}
                             </div>
                           )
-                        } else {
-                          return (
-                            <Tdropdown fieldName={"Static Code Analysis"}  name={"staticCode"} options="---Not Applicable---" /> 
-                          )
-                        }
+                        } 
                         })()}
                         {(() => {
                         if (stage.name === 'DepedencyCheck') {
@@ -154,7 +139,8 @@ const NewProject=()=>{
                                     if (stage.id === tool.id) {
                                       return (
                                         <div>
-                                          <Tdropdown fieldName={"Dependency Check"} options={tool.name} name={"dependencyCheck"}/>
+                                          <Tdropdown fieldName={"Dependency Check"}  name={"dependencyCheck"}   options={[tool.name]}/>
+                                        
                                         </div>
                                       )
                                     }
@@ -164,11 +150,7 @@ const NewProject=()=>{
                               })}
                             </div>
                           )
-                        } else {
-                          return (
-                            <Tdropdown fieldName={"Dependency Check"}  name={"dependencyCheck"} options="---Not Applicable---" /> 
-                          )
-                        }
+                        } 
                         })()}
                          {(() => {
                         if (stage.name === 'ArtifactPublish') {
@@ -181,7 +163,8 @@ const NewProject=()=>{
                                     if (stage.id === tool.id) {
                                       return (
                                         <div>
-                                          <Tdropdown fieldName={"Artifactory"} options={tool.name} name={"artifactory"} />
+                                          <Tdropdown fieldName={"Artifactory"}  name={"artifactory"}     options={[tool.name]}/>
+                                      
                                         </div>
                                       )
                                     }
@@ -192,11 +175,7 @@ const NewProject=()=>{
                             </div>
                           )
                         }
-                         else {
-                          return (
-                            <Tdropdown fieldName={"Artifactory"}  name={"Artifactory"} options="---Not Applicable---" /> 
-                          )
-                        }
+                         
                         })()}
                         {(() => {
                         if (stage.name === 'SAST') {
@@ -209,7 +188,7 @@ const NewProject=()=>{
                                     if (stage.id === tool.id) {
                                       return (
                                         <div>
-                                          <Tdropdown fieldName={"SAST / Static Application Security Scan"} options={tool.name} name={"SAST"}/>
+                                          <Tdropdown fieldName={"SAST / Static Application Security Scan"} name={"SAST"}    options={[tool.name]}/>                                      
                                         </div>
                                       )
                                     }
@@ -218,10 +197,6 @@ const NewProject=()=>{
                                 );
                               })}
                             </div>
-                          )
-                        } else {
-                          return (
-                            <Tdropdown fieldName={"SAST / Static Application Security Scan"}  name={"SAST"} options="---Not Applicable---" /> 
                           )
                         }
                         })()}
@@ -236,7 +211,7 @@ const NewProject=()=>{
                                     if (stage.id === tool.id) {
                                       return (
                                         <div>
-                                          <Tdropdown fieldName={"Dynamic Application Security Scan"} options={dast} name={"DAST"}/>
+                                          <Tdropdown fieldName={"Dynamic Application Security Scan"}  name={"DAST"}   options={[dast]}/>                                       
                                         </div>
                                       )
                                     }
@@ -245,10 +220,6 @@ const NewProject=()=>{
                                 );
                               })}
                             </div>
-                          )
-                        } else {
-                          return (
-                            <Tdropdown fieldName={"Dynamic Application Security Scan"}  name={"DAST"} options="---Not Applicable---" /> 
                           )
                         }
                         })()}
