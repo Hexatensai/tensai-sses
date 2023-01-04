@@ -49,7 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function StageToolEdit({edit, setEdit, rowData, rowStage}) {
+export default function StageToolEdit({edit, setEdit, rowData}) {
 
 
   const handleClose = () => {
@@ -77,7 +77,7 @@ export default function StageToolEdit({edit, setEdit, rowData, rowStage}) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowStage?.name} variant="outlined" />
+            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.name} variant="outlined" />
           </label>
         </Box>
         <Box

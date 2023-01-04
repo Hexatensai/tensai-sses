@@ -9,14 +9,14 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
       const handleClickOpen = () => {
         setOpen(true);
       };
-      const [pipelinestages, setPipeline] = useState([]);
+      const [projects, setProjects] = useState([]);
 
       const [rowData, setRowData] = useState(null)
 
       const fetchData = () => {
-      return fetch("https://52.146.8.157:7244/api/pipelinestages/")
+      return fetch("https://52.146.8.157:7249/api/Project/")
         .then((response) => response.json())
-        .then((data) => setPipeline(data));
+        .then((data) => setProjects(data));
       }
       useEffect(() => {
         fetchData()
@@ -33,7 +33,7 @@ import BuildandDeployModal from '../components/Modals/BuildandDeployModal';
                 </tr>
             </thead>
             <tbody>
-            {pipelinestages.map((data, key) => {
+            {projects.map((data, key) => {
                return (
                 <tr key={key} onClick={()=> setRowData(data)}>
                     <td>{data.name}</td>

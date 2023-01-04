@@ -12,7 +12,6 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
     const [supportedTools, setSupportedTools] = useState([]);
     const [edit, setEdit] = useState(false);
     const [rowData, setRowData] = useState(null);
-    const [rowStage, setRowStage] = useState(null)
   
       const fetchData = () => {
        return fetch("https://52.146.8.157:7244/api/stagetool/")
@@ -67,7 +66,7 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
               <td>
                 {pipelineStages.map((stage, id) => {
                 return (
-                  <div key={id} onClick={()=> setRowStage(stage)}>
+                  <div key={id}>
                     {(() => {
                       if (data.id === stage.id) {
                         return (
@@ -112,7 +111,7 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
           </tbody>
           </table>
           <NewStageTool open={open} setOpen={setOpen} />
-          <StageToolsMappingEdits edit={edit} setEdit={setEdit} rowData={rowData} rowStage={rowStage}/>
+          <StageToolsMappingEdits edit={edit} setEdit={setEdit} rowData={rowData}/>
       </div>
     );
 }

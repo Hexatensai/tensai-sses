@@ -108,9 +108,11 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
   }
   
   const [name, setName] = useState()
+  const [description, setDescription] = useState()
   
   useEffect(()=> {
     setName(rowData?.name)
+    setDescription(rowData?.description)
   },[rowData])
   
   return (
@@ -137,8 +139,6 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
               <label>
                 <span className='col-md-3'>Environment Name:</span>
                 <input type="text" className="form-control" ref={put_name} value={name} onChange={(e)=> setName(e.target.value)} />
-                {/* <TextField className='col-md-6' id="outlined-basic" ref={put_name} 
-                 defaultValue={rowData?.name} variant="outlined" /> */}
               </label>
             </Box>
             <Box
@@ -151,9 +151,7 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
             >
               <label>
                 <span className='col-md-3'>Description:</span>
-                <input type="text" className="form-control" ref={put_description} value={rowData?.description} />
-                {/* <TextField className='col-md-6' id="outlined-basic"ref={put_description} defaultValue={ rowData?.description} 
-                variant="outlined" /> */}
+                <input type="text" className="form-control" ref={put_description} value={description} onChange={(e)=> setDescription(e.target.value)} />
               </label>
             </Box>
         </DialogContent>
