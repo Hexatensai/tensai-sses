@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -55,6 +55,66 @@ export default function PipelineStageEdit({edit, setEdit, rowData}) {
     setEdit(false);
   };
 
+  const baseURL = "https://52.146.8.157:7244/api/pipelinestages/";
+
+  const put_id = useRef(null);
+  const put_version = useRef(null);
+  const put_description = useRef(null);
+  const put_name = useRef(null);
+
+  const [putResult, setPutResult] = useState(null);
+
+  const fortmatResponse = (res) => {
+    return JSON.stringify(res, null, 2);
+  }
+  
+  async function putData() {
+    const id = put_id.current.value;
+    if (id) {
+      const putData = {
+        name: put_name.current.value,
+        description: put_description.current.value,
+        version:parseInt(put_version.current.value),
+        id: parseInt(put_id.current.value)
+      };
+
+      try {
+        const res = await fetch(`${baseURL}${id}`, {
+          method: "put",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(putData),
+        });
+
+        if (!res.ok) {
+          const message = `An error has occured: ${res.status} - ${res.statusText}`;
+          throw new Error(message);
+        }
+
+        const data = await res.json();
+        const result = {
+          status: res.status + "-" + res.statusText,
+          headers: { "Content-Type": res.headers.get("Content-Type") },
+          data: data,
+        };
+
+        setPutResult(fortmatResponse(result));
+      } catch (err) {
+        setPutResult(err.message);
+      }
+      setEdit(false);
+    }
+  }
+  
+  const [name, setName] = useState()
+  const [description, setDescription] = useState()
+  
+  useEffect(()=> {
+    setName(rowData?.name)
+    setDescription(rowData?.description)
+  },[rowData])
+
   return (
     <div>
       <BootstrapDialog
@@ -66,6 +126,8 @@ export default function PipelineStageEdit({edit, setEdit, rowData}) {
         Modify Stage
         </BootstrapDialogTitle>
         <DialogContent className='dialog-wrap toolschain-outer' dividers>
+        <input type="number" style={{display: "none"}} ref={put_id} value={rowData?.id}  placeholder="Id" />
+        <input type="number" style={{display: "none"}} ref={put_version} value={rowData?.version}  placeholder="Version" />
         <Box
           component="form"
           sx={{
@@ -76,7 +138,7 @@ export default function PipelineStageEdit({edit, setEdit, rowData}) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.name} variant="outlined" />
+            <input type="text" className="form-control" ref={put_name} value={name} onChange={(e)=> setName(e.target.value)} />
           </label>
         </Box>
         <Box
@@ -89,12 +151,12 @@ export default function PipelineStageEdit({edit, setEdit, rowData}) {
         >
           <label>
             <span className='col-md-3'>Description:</span>
-            <TextField className='col-md-6' id="outlined-basic" defaultValue={rowData?.description} variant="outlined" />
+            <input type="text" className="form-control" ref={put_description} value={description} onChange={(e)=> setDescription(e.target.value)} />
           </label>
         </Box>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" color="primary" autoFocus onClick={handleClose}>
+          <Button variant="contained" color="primary" autoFocus onClick={putData}>
             Save
           </Button>
         </DialogActions>
