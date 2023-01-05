@@ -14,24 +14,13 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
     const [rowData, setRowData] = useState(null);
   
       const fetchData = () => {
-       return fetch("https://52.146.8.157:7244/api/stagetool/")
+       return fetch("https://52.146.8.157:7251/api/stagetool/")
          .then((response) => response.json())
          .then((data) => setStageTools(data));
       }
-      const fetchDataStage = () => {
-        return fetch("https://52.146.8.157:7244/api/pipelinestages/")
-          .then((response) => response.json())
-          .then((stage) => setPipelineStages(stage));
-       }
-      const fetchDataTool = () => {
-        return fetch("https://52.146.8.157:7244/api/supporttools/")
-          .then((response) => response.json())
-          .then((tool) => setSupportedTools(tool));
-      }
+
       useEffect(() => {
         fetchData()
-        fetchDataStage()
-        fetchDataTool()
       }, [])
 
       const [open, setOpen] = React.useState(false);
@@ -64,37 +53,13 @@ import StageToolsMappingEdits from '../Modals/StageToolsMapingEdits';
             return (
             <tr key={key} onClick={()=> setRowData(data)}>
               <td>
-                {pipelineStages.map((stage, id) => {
-                return (
-                  <div key={id}>
-                    {(() => {
-                      if (data.id === stage.id) {
-                        return (
-                          <div>{stage.name}</div>
-                        )
-                      }
-                      })()}
-                  </div>
-                );
-              })}
+                <div>{data.pipelinename}</div>
               </td>
               <td>
-              {supportedTools.map((tool, id) => {
-                return (
-                  <div key={id}>
-                    {(() => {
-                      if (data.id === tool.id) {
-                        return (
-                          <div>{tool.name}</div>
-                        )
-                      }
-                      })()}
-                  </div>
-                );
-              })}
+                {data.toolname}
               </td>
-              <td>{data.name}</td>
-              <td>{ data.description}</td>
+              <td>{data.stagetoolname}</td>
+              <td>{ data.stagetooldescription}</td>
               <td>
               <Button variant="contained" className='btn-style' startIcon={<EditIcon />} color="primary" onClick={handleChange}>
                 Edit
