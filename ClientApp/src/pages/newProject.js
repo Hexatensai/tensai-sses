@@ -42,7 +42,7 @@ const navigate = useNavigate()
   const onSubmitHandler = async (e)=>{
     e.preventDefault()
     try {
-    const res = await fetch("https://52.146.8.157:7251/api/stagetool/", {
+    const res = await fetch("https://52.146.8.157:7249/api/project/", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
@@ -54,7 +54,6 @@ const navigate = useNavigate()
     navigate("/projects")
   }
   catch(err) {
-    // console.log(err);
     alert(err?.title)
   }
 }
@@ -72,15 +71,20 @@ const navigate = useNavigate()
             setFormData={setFormData}
             name={"name"}
           />
+          <TTextField
+            fieldName={"Description"}
+            setFormData={setFormData}
+            name={"description"}
+          />
           <Tdropdown
             fieldName={"Category"}
             options={categories || []}
-            name={"codeRepo"}
+            name={"category"}
             setFormData={setFormData}
           />
           <Tdropdown
             fieldName={"Application Code Repository"}
-            name={"codeRepo"}
+            name={"scm_tool"}
             options={
               stageTools?.filter(stage =>
                 stage.pipelinename === "CodeClone"
@@ -110,7 +114,7 @@ const navigate = useNavigate()
           />
           <Tdropdown
             fieldName={"Dependency Check"}
-            name={"dependencyCheck"}
+            name={"dependency_check"}
             options={
               stageTools?.filter((stage) =>
                 stage.pipelinename === "DepedencyCheck"
@@ -130,7 +134,7 @@ const navigate = useNavigate()
           />
           <Tdropdown
             fieldName={"SAST / Static Application Security Scan"}
-            name={"SAST"}
+            name={"sast"}
             options={
               stageTools?.filter((stage) =>
                 stage.pipelinename === "SAST" 
@@ -140,7 +144,7 @@ const navigate = useNavigate()
           />
           <Tdropdown
             fieldName={"Dynamic Application Security Scan"}
-            name={"DAST"}
+            name={"dast"}
             options={
               stageTools?.filter((stage) =>
                 stage.pipelinename === "DAST"
@@ -151,13 +155,13 @@ const navigate = useNavigate()
           <TCheckBox
             fieldName={"Deployable Environment"}
             label={"Dev"}
-            name={"DeployableEnv"}
+            name={"project_deploy_env"}
             setFormData={setFormData}
           />
           <TCheckBox
             fieldName={"Deployements"}
             label={"Requires Deployment"}
-            name={"deployments"}
+            name={"deploy"}
             setFormData={setFormData}
           />
           <Button variant="contained" onClick={onSubmitHandler}>SAVE </Button>
