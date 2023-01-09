@@ -165,4 +165,7 @@ button {
 .dialog-wrap .css-19l4syt-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   width: 100% !important;
 }
-
+.checkbox-outer {
+  display: flex;
+  width: 50%;
+}

@@ -9,12 +9,12 @@ function Project() {
     const [categories, setCategory] = useState([]);
 
     const fetchData = () => {
-     return fetch("https://52.146.8.157:7249/api/Project/")
+     return fetch("https://52.146.8.157:7244/api/Project/")
        .then((response) => response.json())
        .then((data) => setProjects(data));
     }
     const fetchCategory= () => {
-      return fetch("https://52.146.8.157:7249/api/category/")
+      return fetch("https://52.146.8.157:7244/api/category/")
         .then((response) => response.json())
         .then((data) => setCategory(data));
      }

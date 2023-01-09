@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 import { resolveTripleslashReference } from "typescript";
 import { useNavigate } from "react-router-dom";
+import { fontWeight } from "@mui/system";
 
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -18,23 +19,29 @@ const navigate = useNavigate()
 
   const [categories, setCategory] = useState([]);
   const [stageTools, setStageTools] = useState([]);
+  const [environments, setEnvironments] = useState([]);
   const fetchData = () => {
     return fetch("https://52.146.8.157:7244/api/category/")
       .then((response) => response.json())
       .then((category) => setCategory(category));
   };
+  const fetchEnvironments = () => {
+    return fetch("https://52.146.8.157:7244/api/environments/")
+      .then((response) => response.json())
+      .then((environment) => setEnvironments(environment));
+  };
   const fetcStageTool = () => {
-    return fetch("https://52.146.8.157:7251/api/stagetool/")
+    return fetch("https://52.146.8.157:7244/api/stagetool/")
       .then((response) => response.json())
       .then((stage) => setStageTools(stage));
   };
   useEffect(() => {
     fetchData();
     fetcStageTool();
+    fetchEnvironments();
   }, []);
 
   useEffect(()=> {
-
     console.log(formData)
   
   },[formData])
@@ -42,7 +49,7 @@ const navigate = useNavigate()
   const onSubmitHandler = async (e)=>{
     e.preventDefault()
     try {
-    const res = await fetch("https://52.146.8.157:7249/api/project/", {
+    const res = await fetch("https://52.146.8.157:7244/api/project/", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
@@ -70,11 +77,6 @@ const navigate = useNavigate()
             fieldName={"Application/Project"}
             setFormData={setFormData}
             name={"name"}
-          />
-          <TTextField
-            fieldName={"Description"}
-            setFormData={setFormData}
-            name={"description"}
           />
           <Tdropdown
             fieldName={"Category"}
@@ -152,12 +154,20 @@ const navigate = useNavigate()
             }
             setFormData={setFormData}
           />
-          <TCheckBox
-            fieldName={"Deployable Environment"}
-            label={"Dev"}
-            name={"project_deploy_env"}
-            setFormData={setFormData}
-          />
+          <div>
+            <label style={{fontWeight: "500"}}>Deployable Environment</label>
+            <div className="checkbox-outer">
+              {environments.map((environment, key) => {
+                return ( 
+                <TCheckBox
+                  label={environment.name}
+                  name={"project_deploy_env"}
+                  setFormData={setFormData}
+                />
+                );
+              })}
+            </div>
+          </div>
           <TCheckBox
             fieldName={"Deployements"}
             label={"Requires Deployment"}
@@ -176,4 +186,4 @@ const navigate = useNavigate()
   );
 };
 export default NewProject;
-// SCM Tool
+
