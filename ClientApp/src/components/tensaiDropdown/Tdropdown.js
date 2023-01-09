@@ -38,14 +38,12 @@ export default function Tdropdown({fieldName,name, options, setFormData}) {
           {options?.length > 0 ? 
           options?.map((option) => 
           <MenuItem
-          key={option}
-          value={option}
-
+          key={option?.id}
+          value={option?.toolname || option?.name}
         >
-          {option}
+          {option?.toolname || option?.name }
         </MenuItem>
           )
-
            : 
         <MenuItem >No data Found</MenuItem>
           }
