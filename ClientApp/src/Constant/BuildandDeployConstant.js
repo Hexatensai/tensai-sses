@@ -7,3 +7,6 @@ export const environment=[
     "QA",
     "PSE"
 ]
+export const credentialType=[
+    "Id/Token"
+]

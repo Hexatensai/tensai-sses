@@ -6,21 +6,14 @@ import '../custom.css';
 
 function Project() {
     const [projects, setProjects] = useState([]);
-    const [categories, setCategory] = useState([]);
 
     const fetchData = () => {
      return fetch("https://52.146.8.157:7244/api/Project/")
        .then((response) => response.json())
        .then((data) => setProjects(data));
     }
-    const fetchCategory= () => {
-      return fetch("https://52.146.8.157:7244/api/category/")
-        .then((response) => response.json())
-        .then((data) => setCategory(data));
-     }
     useEffect(() => {
       fetchData()
-      fetchCategory()
     }, [])
     return ( 
         <div className='page-outer'>
@@ -45,19 +38,7 @@ function Project() {
                 <tr key={key}>
                     <td>{data.name}</td>
                     <td>
-                      {categories.map((category, id) => {
-                        return (
-                          <div key={id}>
-                            {(() => {
-                              if (data.id === category.id) {
-                                return (
-                                  <div>{category.name}</div>
-                                )
-                              }
-                              })()}
-                          </div>
-                        );
-                      })}
+                      {data.category}
                     </td>
                     <td>{data.scm_tool}</td>
                     <td>

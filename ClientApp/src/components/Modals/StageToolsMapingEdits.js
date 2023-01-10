@@ -82,9 +82,9 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
       const putData = {
         name: put_name.current.value,
         description: put_description.current.value,
-        stage_id: parseInt(put_stageid.current.value),
-        tool_id: parseInt(put_toolid.current.value),
-        accessurl: put_accessurl.current.value,
+        stage_id: parseInt(put_stageid.current.id),
+        tool_id: parseInt(put_toolid.current.id),
+        access_url: put_accessurl.current.value,
         cred_user: put_credUser.current.value,
         cred_secret: put_credSecret.current.value,
         version: parseInt(put_version.current.value),
@@ -126,6 +126,8 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
   const [stagetooldescription, setDescription] = useState()
   const [stageid, setStageid] = useState()
   const [toolid, setToolid] = useState()
+  const [pipelinename, setPipelineName] = useState()
+  const [toolname, setToolName] = useState()
   const [accessurl, setAccessurl] = useState()
   const [cred_user, setCreduser] = useState()
   const [cred_secret, setCredsecret] = useState()
@@ -134,6 +136,8 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
   useEffect(()=> {
     setStageid(rowData?.stageid)
     setToolid(rowData?.toolid)
+    setPipelineName(rowData?.pipelinename)
+    setToolName(rowData?.toolname)
     setName(rowData?.stagetoolname)
     setDescription(rowData?.stagetooldescription)
     setAccessurl(rowData?.accessurl)
@@ -156,7 +160,6 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
         <input type="number" style={{display: "none"}} ref={put_id} value={rowData?.id}  placeholder="Id" />
         <input type="number" style={{display: "none"}} ref={put_version} value={rowData?.version}  placeholder="Version" />
         <input type="text" style={{display: "none"}} ref={put_isActive} value={rowData?.isActive}  placeholder="isActive" />
-        <input type="text" className="form-control" ref={put_credType} value={cred_type} onChange={(e)=> setCredType(e.target.value)} />
         <Box
           component="form"
           sx={{
@@ -167,7 +170,7 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <input type="text" className="form-control" ref={put_stageid} value={stageid} onChange={(e)=> setStageid(e.target.value)} />
+            <input type="text" className="form-control" ref={put_stageid} id={stageid} value={pipelinename} onChange={(e)=> setPipelineName(e.target.value)} />
           </label>
         </Box>
         <Box
@@ -180,7 +183,7 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
         >
           <label>
             <span className='col-md-3'>Tool:</span>
-            <input type="text" className="form-control" ref={put_toolid} value={toolid} onChange={(e)=> setToolid(e.target.value)} />
+            <input type="text" className="form-control" ref={put_toolid} id={toolid} value={toolname} onChange={(e)=> setToolName(e.target.value)} />
           </label>
         </Box>
         <Box
@@ -207,6 +210,19 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
           <label>
             <span className='col-md-3'>Description:</span>
             <input type="text" className="form-control" ref={put_description} value={stagetooldescription} onChange={(e)=> setDescription(e.target.value)} />
+          </label>
+        </Box>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <label>
+            <span className='col-md-3'>Type:</span>
+             <input type="text" className="form-control" ref={put_credType} value={cred_type} onChange={(e)=> setCredType(e.target.value)} />
           </label>
         </Box>
         <Box

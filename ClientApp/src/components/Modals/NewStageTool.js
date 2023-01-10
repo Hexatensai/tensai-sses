@@ -11,6 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Tdropdown from '../tensaiDropdown/Tdropdown';
+import { credentialType } from '../../Constant/BuildandDeployConstant';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -77,6 +78,7 @@ export default function NewStageTool({open, setOpen }) {
     fetchTool()
   }, [])
 
+  const [formData, setFormData] = useState({});
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [accessurl, setAccessurl] = useState("");
@@ -142,7 +144,9 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <Tdropdown className='col-md-6' options={pipelineStages?.map((data) => data.name) || []} />
+            <Tdropdown className='col-md-6' options={pipelineStages || []}
+            name={"stage_id"}
+            setFormData={setFormData} />
           </label>
         </Box>
         <Box
@@ -155,7 +159,11 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Tool:</span>
-            <Tdropdown className='col-md-6' options={supportedTools?.map((tool) => tool.name) || []}/>
+            <Tdropdown className='col-md-6' 
+            options={supportedTools || []}
+            name={"tool_id"}
+            setFormData={setFormData}
+            />
           </label>
         </Box>
         <Box
@@ -194,7 +202,7 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Credential Type:</span>
-            <Tdropdown onChange={(e) => setCredtype(e.target.value)}/>
+            <Tdropdown options={credentialType} onChange={(e) => setCredtype(e.target.value)}/>
           </label>
         </Box>
         <Box
