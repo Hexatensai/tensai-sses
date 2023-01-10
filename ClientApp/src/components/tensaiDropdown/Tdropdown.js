@@ -39,9 +39,9 @@ export default function Tdropdown({fieldName,name, options, setFormData}) {
           options?.map((option) => 
           <MenuItem
           key={option?.id}
-          value={option?.toolname || option?.name}
+          value={name === 'scm_tool' ? (`${option?.toolname} / ${option?.accessurl}`) : (option?.toolname || option?.name) }
         >
-          {option?.toolname || option?.name }
+          {name === 'scm_tool' ? (`${option?.toolname} / ${option?.accessurl}`) : (option?.toolname || option?.name) }
         </MenuItem>
           )
            : 

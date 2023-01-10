@@ -57,11 +57,11 @@ const navigate = useNavigate()
       }
     });
     const result= await res.json()
-    console.log(result);
+    // console.log(result);
     navigate("/projects")
   }
   catch(err) {
-    alert(err?.title)
+    // alert(err?.title)
   }
 }
 
@@ -160,6 +160,7 @@ const navigate = useNavigate()
               {environments.map((environment, key) => {
                 return ( 
                 <TCheckBox
+                  id={environment.id}
                   label={environment.name}
                   name={"project_deploy_env"}
                   setFormData={setFormData}
@@ -170,6 +171,7 @@ const navigate = useNavigate()
           </div>
           <TCheckBox
             fieldName={"Deployements"}
+            type={'deploy'}
             label={"Requires Deployment"}
             name={"deploy"}
             setFormData={setFormData}
