@@ -1,0 +1,1 @@
+export const jenkins = "http://20.15.98.15:8080/job/unique-tensai/build?delay=0sec";

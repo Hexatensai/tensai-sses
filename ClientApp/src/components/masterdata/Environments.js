@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import NewEnvironment from '../Modals/NewEnvironment';
 import EnvironmentEdits from '../Modals/EnvironmentEdits';
+import { data } from 'jquery';
 
 
 function Environments() {
@@ -30,6 +31,14 @@ function Environments() {
       setEdit(true);
       console.log("Clicked");
     };
+
+    const DeleteHandler = (e) =>{
+      // console.log(rowData.filter(edit !== data.id))
+      console.log(rowData);
+      // console.log(edit);
+      // console.log(environments);
+      console.log("Deleted");
+    }
 
     return ( 
         <div>
@@ -58,7 +67,7 @@ function Environments() {
                 </Button>
                 </td>
                 <td>
-                <Button variant="outlined" className='btn-style' startIcon={<DeleteIcon />}>
+                <Button variant="outlined" className='btn-style' startIcon={<DeleteIcon />} onClick={DeleteHandler}>
                   Delete
                 </Button>
                 </td>

@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Tdropdown from '../tensaiDropdown/Tdropdown';
 import { branch, environment } from '../../Constant/BuildandDeployConstant';
+import { jenkins } from '../../Constant/AppConstant';
+import { useEffect, useState } from 'react';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -51,13 +53,23 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({open, setOpen, rowData}) {
+export default function BuildandDeployModal({open, setOpen}) {
 
   const [formData, setFormData] = useState({});
+  const [data, setData] = useState(null)
+
+  const fetchData = () => {
+  return fetch("https://52.146.8.157:7244/api/stagetool/")
+    .then((response) => response.json())
+    .then((data) => setData(data));
+  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <div>
       <BootstrapDialog
@@ -79,7 +91,7 @@ export default function BuildandDeployModal({open, setOpen, rowData}) {
             >
       <label >
         <span className='col-md-3'>Application Repository:</span>
-        <TextField className='col-md-6' id="outlined-basic" variant="outlined" defaultValue={rowData?.description} />
+        <TextField className='col-md-6' id="outlined-basic" variant="outlined" defaultValue={data?.[7]?.accessurl} />
       </label>
     
             </Box>
@@ -93,10 +105,8 @@ export default function BuildandDeployModal({open, setOpen, rowData}) {
           >
             <label>
               <span className='col-md-3'>Branch:</span>
-              <Tdropdown 
-              options={branch || []}
-              setFormData={setFormData}
-              />
+              <Tdropdown options={branch} 
+              setFormData={setFormData}/>         
             </label>
           </Box>
           <Box
@@ -109,9 +119,8 @@ export default function BuildandDeployModal({open, setOpen, rowData}) {
           >
             <label>
               <span className='col-md-3'>Environment:</span>
-              <Tdropdown 
-                options={environment || []}
-                setFormData={setFormData}/>
+              <Tdropdown options={environment}
+              setFormData={setFormData}/> 
             </label>
           </Box>
           <label>
@@ -120,7 +129,7 @@ export default function BuildandDeployModal({open, setOpen, rowData}) {
           </label>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" color="primary" autoFocus onClick={handleClose}>
+          <Button variant="contained" color="primary" autoFocus onClick={handleClose} href={jenkins} target="_blank">
             Build
           </Button>
         </DialogActions>

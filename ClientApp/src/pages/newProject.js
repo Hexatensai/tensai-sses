@@ -75,13 +75,15 @@ const navigate = useNavigate()
           </p>
           <TTextField
             fieldName={"Application/Project"}
-            setFormData={setFormData}
             name={"name"}
+            setFormData={setFormData}
+            labelName={"Project Name"}
           />
             <TTextField
               fieldName={"Description"}
               name={"description"}
               setFormData={setFormData}
+              labelName={"Project Description"}
             />
           <Tdropdown
             fieldName={"Category"}
@@ -162,7 +164,7 @@ const navigate = useNavigate()
           <div>
             <label style={{fontWeight: "500"}}>Deployable Environment</label>
             <div className="checkbox-outer">
-              {environments.map((environment, key) => {
+              {environments.map((environment, id) => {
                 return ( 
                 <TCheckBox
                   id={environment.id}
