@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Tdropdown from '../tensaiDropdown/Tdropdown';
 import { credentialType } from '../../Constant/BuildandDeployConstant';
+import TTextField from "../../components/TensaitextField/TTextField";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -51,7 +52,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function NewStageTool({open, setOpen }) {
+export default function NewStageTool({open, setOpen, rowData }) {
 
 
   const handleClose = () => {
@@ -79,49 +80,27 @@ export default function NewStageTool({open, setOpen }) {
   }, [])
 
   const [formData, setFormData] = useState({});
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [accessurl, setAccessurl] = useState("");
-  const [credtype, setCredtype] = useState("");
-  const [creduser, setCreduser] = useState("");
-  const [credsecret, setCredsecret] = useState("");
-  const [toolid, setToolid] = useState("");
-  const [stageid, setStageid] = useState("");
-  let handleSave = async (e) => {
-    e.preventDefault();
+  useEffect(()=> {
+    console.log(formData)
+  },[formData])
+  const onSubmitHandler = async (e)=>{
+    e.preventDefault()
     try {
-      let res = await fetch("https://52.146.8.157:7244/api/stagetool/", {
-        method: "POST",
-        body: JSON.stringify({
-          name: name,
-          description: description, 
-          access_url: accessurl,
-          cred_type: credtype,
-          cred_user: creduser,
-          cred_secret: credsecret,
-          tool_id: 2,
-          stage_id:2
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setName("");
-        setDescription("");
-        setAccessurl("");
-        setCredtype("");
-        setCreduser("");
-        setCredsecret("");
-        setToolid("");
-        setStageid("");
-      } 
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch("https://52.146.8.157:7244/api/stagetool/", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const result= await res.json()
+    // console.log(result);
     setOpen(false);
-  };
+  }
+  catch(err) {
+    // alert(err?.title)
+  }
+}
 
   return (
     <div>
@@ -144,9 +123,10 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <Tdropdown className='col-md-6' options={pipelineStages || []}
-            name={"stage_id"}
-            setFormData={setFormData} />
+              <Tdropdown className='col-md-6' options={pipelineStages || []}
+              setFormData={setFormData}
+              name={"stage_id"}
+              />
           </label>
         </Box>
         <Box
@@ -159,11 +139,11 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Tool:</span>
-            <Tdropdown className='col-md-6' 
-            options={supportedTools || []}
-            name={"tool_id"}
-            setFormData={setFormData}
-            />
+              <Tdropdown className='col-md-6' 
+              options={supportedTools || []}
+              setFormData={setFormData}
+              name={"tool_id"}
+              />
           </label>
         </Box>
         <Box
@@ -176,7 +156,8 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Name:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Name" onChange={(e) => setName(e.target.value)} variant="outlined" />
+            <TTextField className='col-md-6' id="outlined-basic" labelName={"Name"}
+            setFormData={setFormData} name={"name"} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -189,7 +170,8 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Description:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Description" onChange={(e) => setDescription(e.target.value)} variant="outlined" />
+            <TTextField className='col-md-6' id="outlined-basic" labelName={"Description"}
+            setFormData={setFormData} name={"description"} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -203,10 +185,7 @@ export default function NewStageTool({open, setOpen }) {
           <label>
             <span className='col-md-3'>Credential Type:</span>
             <Tdropdown
-            options={credentialType || []}
-            name={"cred_type"}
-            setFormData={setFormData}
-            onChange={(e) => setCredtype(e.target.value)}/>
+            options={credentialType || []} setFormData={setFormData} name={"cred_type"} />
           </label>
         </Box>
         <Box
@@ -219,7 +198,8 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Access URL:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="URL" onChange={(e) => setAccessurl(e.target.value)} variant="outlined" />
+            <TTextField className='col-md-6' id="outlined-basic" labelName={"URL" }
+            setFormData={setFormData} name={"access_url"} variant="outlined" />
           </label>
         </Box>
         <Box
@@ -232,7 +212,7 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>User:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Id" onChange={(e) => setCreduser(e.target.value)}  variant="outlined" />
+            <TTextField className='col-md-6' id="outlined-basic" labelName={"Id"} setFormData={setFormData} name={"cred_user"}  variant="outlined" />
           </label>
         </Box>
         <Box
@@ -245,12 +225,13 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Secret:</span>
-            <TextField className='col-md-6' id="outlined-basic" label="Secret" onChange={(e) => setCredsecret(e.target.value)}  variant="outlined" />
+            <TTextField className='col-md-6' id="outlined-basic" labelName={"Secret"}
+            setFormData={setFormData} name={"cred_secret"} variant="outlined" />
           </label>
         </Box>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" color="primary" autoFocus onClick={handleSave}>
+          <Button variant="contained" color="primary" onClick={onSubmitHandler}>
             Save
           </Button>
         </DialogActions>

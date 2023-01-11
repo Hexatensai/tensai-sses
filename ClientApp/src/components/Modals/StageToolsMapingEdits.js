@@ -170,7 +170,7 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
         >
           <label>
             <span className='col-md-3'>Stage:</span>
-            <input type="text" className="form-control" ref={put_stageid} id={stageid} value={pipelinename} onChange={(e)=> setPipelineName(e.target.value)} />
+            <input type="text" className="form-control" disabled ref={put_stageid} id={stageid} value={pipelinename} onChange={(e)=> setPipelineName(e.target.value)} />
           </label>
         </Box>
         <Box
@@ -183,7 +183,7 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
         >
           <label>
             <span className='col-md-3'>Tool:</span>
-            <input type="text" className="form-control" ref={put_toolid} id={toolid} value={toolname} onChange={(e)=> setToolName(e.target.value)} />
+            <input type="text" className="form-control" disabled ref={put_toolid} id={toolid} value={toolname} onChange={(e)=> setToolName(e.target.value)} />
           </label>
         </Box>
         <Box
