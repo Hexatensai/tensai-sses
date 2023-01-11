@@ -78,6 +78,11 @@ const navigate = useNavigate()
             setFormData={setFormData}
             name={"name"}
           />
+            <TTextField
+              fieldName={"Description"}
+              name={"description"}
+              setFormData={setFormData}
+            />
           <Tdropdown
             fieldName={"Category"}
             options={categories || []}
