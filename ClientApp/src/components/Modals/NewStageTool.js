@@ -202,7 +202,11 @@ export default function NewStageTool({open, setOpen }) {
         >
           <label>
             <span className='col-md-3'>Credential Type:</span>
-            <Tdropdown options={credentialType} onChange={(e) => setCredtype(e.target.value)}/>
+            <Tdropdown
+            options={credentialType || []}
+            name={"cred_type"}
+            setFormData={setFormData}
+            onChange={(e) => setCredtype(e.target.value)}/>
           </label>
         </Box>
         <Box

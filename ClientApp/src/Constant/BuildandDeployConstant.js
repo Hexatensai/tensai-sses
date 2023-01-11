@@ -1,12 +1,31 @@
 export const branch=[
-    "main",
-    "develop"
+    {
+        "name" : "main"
+    },
+    {
+        "name" : "develop"
+    }
 ]
 export const environment=[
-    "DEV",
-    "QA",
-    "PSE"
+    {
+        "id": 1,
+        "toolname": "DEV"
+    },
+    {
+        "id": 2,
+        "toolname": "STAGE"
+    },
+    {
+        "id": 3,
+        "toolname": "PREPOD"
+    },
+    {
+        "id": 4,
+        "toolname": "PROD"
+    },
 ]
 export const credentialType=[
-    "Id/Token"
+    {
+        "name" : "Id/Token"
+    }
 ]

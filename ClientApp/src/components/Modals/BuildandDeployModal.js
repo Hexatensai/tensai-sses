@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -53,7 +53,7 @@ BootstrapDialogTitle.propTypes = {
 
 export default function BuildandDeployModal({open, setOpen, rowData}) {
 
-
+  const [formData, setFormData] = useState({});
   const handleClose = () => {
     setOpen(false);
   };
@@ -93,7 +93,10 @@ export default function BuildandDeployModal({open, setOpen, rowData}) {
           >
             <label>
               <span className='col-md-3'>Branch:</span>
-              <Tdropdown options={branch}/>
+              <Tdropdown 
+              options={branch || []}
+              setFormData={setFormData}
+              />
             </label>
           </Box>
           <Box
@@ -106,7 +109,9 @@ export default function BuildandDeployModal({open, setOpen, rowData}) {
           >
             <label>
               <span className='col-md-3'>Environment:</span>
-              <Tdropdown options={environment}/>
+              <Tdropdown 
+                options={environment || []}
+                setFormData={setFormData}/>
             </label>
           </Box>
           <label>
