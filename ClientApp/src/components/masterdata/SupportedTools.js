@@ -6,7 +6,7 @@ import NewTool from '../Modals/NewTool';
     function SupportedTools() {
       const [supportedTools, setSupportedTools] = useState([]);
     
-        const fetchData = () => {
+        const fetchData = async () => {
          return fetch("https://52.146.8.157:7244/api/supporttools/")
            .then((response) => response.json())
            .then((data) => setSupportedTools(data));
@@ -42,7 +42,7 @@ import NewTool from '../Modals/NewTool';
               })}
             </tbody>
             </table>
-            <NewTool open={open} setOpen={setOpen} />
+            {open &&<NewTool open={open} setOpen={setOpen} fetchData={fetchData}  />}
         </div>
     );
 

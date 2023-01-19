@@ -4,6 +4,7 @@
 
 html, body, html * {
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 .tab-buttons{
@@ -12,25 +13,25 @@ html, body, html * {
 
 button {
   margin-right:15px;
-  font-size:20px;
+  font-size: 18px;
   background:transparent;
   border:none;
   outline:none;
-  padding:10px 20px ;
+  padding:10px 25px ;
   cursor:pointer;
   color: #000;
   font-weight: 400;
   transition:all ease-in-out .2s;
   border-bottom:2px solid transparent;
-  
 }
 .toolschain-outer .tab-buttons button {
-  font-size: 17px;
+  font-size: 16px;
+
 }
 .toolschain-outer label {
   display: flex;
   width: 100%;
-  font-size: 17px;
+  font-size: 16px;
   align-items: center;
   margin-bottom: 2rem !important;
 }
@@ -67,9 +68,14 @@ button {
   background-color: #06c;
   color: #fff;
 }
-.table th, .table td {
+.table td, .table th {
   padding: 0.8rem;
   font-weight: initial;
+}
+.table th{
+padding: 0.8rem;
+font-weight: 700;
+align-items: center;
 }
 .env-btn-outer {
   display: flex;
@@ -97,8 +103,8 @@ button {
 .page-outer {
   margin-top: 1.5rem !important;
   position: relative;
-  max-width: 1050px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 1rem 2rem;
   width: 100%;
 }
 .redirect-link, .redirect-link:hover {

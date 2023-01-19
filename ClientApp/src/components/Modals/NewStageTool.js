@@ -126,6 +126,7 @@ export default function NewStageTool({open, setOpen, rowData }) {
               <Tdropdown className='col-md-6' options={pipelineStages || []}
               setFormData={setFormData}
               name={"stage_id"}
+              type={"id"}
               />
           </label>
         </Box>
@@ -143,6 +144,7 @@ export default function NewStageTool({open, setOpen, rowData }) {
               options={supportedTools || []}
               setFormData={setFormData}
               name={"tool_id"}
+              type={"id"}
               />
           </label>
         </Box>

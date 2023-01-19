@@ -22,12 +22,12 @@ function Project() {
             <Button variant="contained">NEW PROJECT</Button>
             </Link>
           </div>
-            <table className="table table-striped">
+            <table className="table table-striped" >
             <thead>
                 <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
-                <th scope="col">SCM</th>
+                <th  scope="col" style={{display: 'flex',justifyContent:'center', alignItems: 'center'}}>SCM</th>
                 <th scope="col">Deployment</th>
                 <th scope="col">Modify</th>
                 </tr>

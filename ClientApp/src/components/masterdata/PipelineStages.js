@@ -11,8 +11,8 @@ function PipelineStages() {
   const [rowData, setRowData] = useState(null)
 
 
-    const fetchData = () => {
-     return fetch("https://52.146.8.157:7244/api/pipelinestages/")
+    const fetchData = async() => {
+     fetch("https://52.146.8.157:7244/api/pipelinestages/")
        .then((response) => response.json())
        .then((data) => setPipelineStages(data));
     }
@@ -64,8 +64,8 @@ function PipelineStages() {
               })}
             </tbody>
             </table>
-            <NewStage open={open} setOpen={setOpen} />
-            <PipelineStagesEdits edit={edit} setEdit={setEdit} rowData={rowData}/>
+            <NewStage open={open} setOpen={setOpen} fetchData={fetchData}/>
+            <PipelineStagesEdits edit={edit} setEdit={setEdit} rowData={rowData} fetchData={fetchData}/>
         </div>
     );
 }

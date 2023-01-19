@@ -18,7 +18,7 @@ export class Header extends Component {
             </a>
           </div>
           <div className='col-sm header-center-align'>
-            <h2>Tensai Release</h2>
+            <h2 style={{fontSize:"25px"}}>Tensai Release</h2>
           </div>
           <div className='col-sm header-right-align'>
             <div className='profile-icon'>

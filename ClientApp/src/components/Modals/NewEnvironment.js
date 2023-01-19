@@ -49,9 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function NewEnvironment({open, setOpen}) {
-
-
+export default function NewEnvironment({open, setOpen, fetchData}) {
   const handleClose = () => {
     setOpen(false);
   };
@@ -70,11 +68,7 @@ export default function NewEnvironment({open, setOpen}) {
           'Content-Type': 'application/json'
         }
       });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setName("");
-        setDescription("");
-      } 
+      await fetchData() 
     } catch (err) {
       console.log(err);
     }

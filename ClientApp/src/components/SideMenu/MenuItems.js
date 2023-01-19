@@ -20,12 +20,16 @@ const style = {
 
 export default function MenuItems() {
 
+  const checkHandler=()=>{
+    console.log("Clicked")
+  }
+
   return (
     <List sx={style} component="nav" aria-label="mailbox folders">
       <ListItem button className='nav-border' >
       <ListItemText>
           <AccountTreeIcon/>  
-          <Link to="/projects" className='redirect-link'>Project</Link>  
+          <Link to="/projects" className='redirect-link' onClick={checkHandler}>Project</Link>  
         </ListItemText>
       </ListItem>
       <ListItem button className='nav-border'>

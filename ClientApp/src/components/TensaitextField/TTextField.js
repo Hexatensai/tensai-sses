@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField, Typography  } from '@mui/material'
 import { Box } from '@mui/system'
 
-const TTextField = ({fieldName, setFormData, name, labelName }) => {
+const TTextField = ({fieldName, setFormData, name, labelName, defaultValue }) => {
   
     const handleChange=(e)=>{
         setFormData(prevFormData => {
@@ -16,7 +16,7 @@ const TTextField = ({fieldName, setFormData, name, labelName }) => {
     autoComplete="off"
   >
     <Typography variant="h6" component="h3">{fieldName}</Typography>
-      <TextField sx={{ width: "30rem"}} className='col-md-3' id="outlined-basic" label = {labelName} variant="outlined" name={name} onChange={handleChange} />
+      <TextField sx={{ width: "30rem"}} className='col-md-3' id="outlined-basic" label = {labelName} variant="outlined" name={name} onChange={handleChange} defaultValue={defaultValue} />
   </Box>
   )
 }

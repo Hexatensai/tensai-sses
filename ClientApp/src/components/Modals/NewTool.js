@@ -49,7 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function NewTool({open, setOpen}) {
+export default function NewTool({open, setOpen, fetchData}) {
 
    
   const handleClose = () => {
@@ -70,13 +70,8 @@ export default function NewTool({open, setOpen}) {
           'Content-Type': 'application/json'
         }
       });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setName("");
-        setDescription("");
-      } 
+      await fetchData()
     } catch (err) {
-      console.log(err);
     }
     setOpen(false);
   };

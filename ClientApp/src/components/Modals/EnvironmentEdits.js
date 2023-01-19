@@ -49,7 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function EnvironmentEdit({edit, setEdit, rowData}) {
+export default function EnvironmentEdit({edit, setEdit, rowData, fetchData}) {
 
   const handleClose = () => {
     setEdit(false);
@@ -62,11 +62,6 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
   const put_description = useRef(null);
   const put_name = useRef(null);
 
-  const [putResult, setPutResult] = useState(null);
-
-  const fortmatResponse = (res) => {
-    return JSON.stringify(res, null, 2);
-  }
   
   async function putData() {
     const id = put_id.current.value;
@@ -86,22 +81,13 @@ export default function EnvironmentEdit({edit, setEdit, rowData}) {
           },
           body: JSON.stringify(putData),
         });
-
+        await  fetchData()
         if (!res.ok) {
           const message = `An error has occured: ${res.status} - ${res.statusText}`;
           throw new Error(message);
         }
 
-        const data = await res.json();
-        const result = {
-          status: res.status + "-" + res.statusText,
-          headers: { "Content-Type": res.headers.get("Content-Type") },
-          data: data,
-        };
-
-        setPutResult(fortmatResponse(result));
       } catch (err) {
-        setPutResult(err.message);
       }
       setEdit(false);
     }
