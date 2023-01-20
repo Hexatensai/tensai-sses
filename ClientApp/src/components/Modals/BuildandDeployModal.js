@@ -12,7 +12,6 @@ import Box from "@mui/material/Box";
 import Tdropdown from "../tensaiDropdown/Tdropdown";
 import { branch, environment } from "../../Constant/BuildandDeployConstant";
 import { useEffect, useState } from "react";
-import TTextField from "../TensaitextField/TTextField";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -54,12 +53,12 @@ BootstrapDialogTitle.propTypes = {
 
 export default function BuildandDeployModal({ open, setOpen }) {
   const [formData, setFormData] = useState({});
-  const [data, setData] = useState(null);
+  const [stageTools, setStageTools] = useState([]);
 
   const fetchData = () => {
     return fetch("https://52.146.8.157:7244/api/stagetool/")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => setStageTools(data));
   };
   useEffect(() => {
     fetchData();
@@ -109,12 +108,15 @@ export default function BuildandDeployModal({ open, setOpen }) {
           >
             <label>
               <span className="col-md-3">Application Repository:</span>
-            <TTextField
-            setFormData={setFormData}
-            labelName={"Application Repository"}
-            defaultValue={data?.[7]?.accessurl}
-            name={"applicationURL"}
-            />
+              <Tdropdown
+                name={"scm_tool"}
+                options={
+                  stageTools?.filter(data =>
+                    data.pipelinename === "CodeClone"
+                  )
+                }
+                setFormData={setFormData}
+              />
             </label>
           </Box>
           <Box
