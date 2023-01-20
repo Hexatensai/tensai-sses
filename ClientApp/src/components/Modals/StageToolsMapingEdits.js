@@ -9,7 +9,6 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -70,7 +69,7 @@ export default function StageToolEdit({edit, setEdit, rowData}) {
   const put_credUser = useRef(null);
   const put_credSecret = useRef(null);
 
-  const [putResult, setPutResult] = useState(null);
+  const [setPutResult] = useState(null);
 
   const fortmatResponse = (res) => {
     return JSON.stringify(res, null, 2);

@@ -1,17 +1,11 @@
 import Button from "@mui/material/Button";
-import { accordionDetailsClasses, Box, Container, Hidden } from "@mui/material";
+import {  Box, Container } from "@mui/material";
 import Tdropdown from "../components/tensaiDropdown/Tdropdown";
 import { Link } from "react-router-dom";
 import TTextField from "../components/TensaitextField/TTextField";
 import TCheckBox from "../components/TensaiCheckBox/TCheckBox";
 import { useState, useEffect } from "react";
-import classNames from "classnames";
-import { resolveTripleslashReference } from "typescript";
 import { useNavigate } from "react-router-dom";
-import { fontWeight } from "@mui/system";
-
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const NewProject = () => {
 const navigate = useNavigate()
@@ -56,12 +50,10 @@ const navigate = useNavigate()
         'Content-Type': 'application/json'
       }
     });
-    const result= await res.json()
-    // console.log(result);
+    const result = await res.json();
     navigate("/projects")
   }
   catch(err) {
-    // alert(err?.title)
   }
 }
 

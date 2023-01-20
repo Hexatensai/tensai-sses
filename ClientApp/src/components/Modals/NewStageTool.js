@@ -9,7 +9,6 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Tdropdown from '../tensaiDropdown/Tdropdown';
 import { credentialType } from '../../Constant/BuildandDeployConstant';
 import TTextField from "../../components/TensaitextField/TTextField";
@@ -94,11 +93,9 @@ export default function NewStageTool({open, setOpen, rowData }) {
       }
     });
     const result= await res.json()
-    // console.log(result);
     setOpen(false);
   }
   catch(err) {
-    // alert(err?.title)
   }
 }
 

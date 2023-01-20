@@ -9,10 +9,8 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Tdropdown from "../tensaiDropdown/Tdropdown";
 import { branch, environment } from "../../Constant/BuildandDeployConstant";
-import { jenkins } from "../../Constant/AppConstant";
 import { useEffect, useState } from "react";
 import TTextField from "../TensaitextField/TTextField";
 
@@ -40,7 +38,6 @@ function BootstrapDialogTitle(props) {
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
-            // backgroundColor: "red"
           }}
         >
           <CloseIcon />
@@ -84,10 +81,7 @@ export default function BuildandDeployModal({ open, setOpen }) {
         },
       });
       const result = await res.json();
-      // console.log(result);
-      // navigate("/projects")
     } catch (err) {
-      // alert(err?.title)
     }
   };
 
@@ -115,12 +109,6 @@ export default function BuildandDeployModal({ open, setOpen }) {
           >
             <label>
               <span className="col-md-3">Application Repository:</span>
-              {/* <TextField
-                className="col-md-6"
-                id="outlined-basic"
-                variant="outlined"
-                defaultValue={data?.[7]?.accessurl}
-              /> */}
             <TTextField
             setFormData={setFormData}
             labelName={"Application Repository"}

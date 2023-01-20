@@ -6,7 +6,7 @@ const TCheckBox = ({fieldName, label,id, name, setFormData,type}) => {
     
 
     const [checked, setChecked] = useState(false)
-    const [arr,setArr] = useState([])
+    const [arr] = useState([])
     useEffect(() => {
       console.log(arr)
     
@@ -22,7 +22,7 @@ const TCheckBox = ({fieldName, label,id, name, setFormData,type}) => {
           if(e.target.checked)
             return {...prevFormData, [e.target.name] : `${prevFormData[e.target.name]},${e.target.value}`}
           else 
-            return {...prevFormData, [e.target.name] :prevFormData[e.target.name].split(',').filter(val => val != e.target.value).join(',')}
+            return {...prevFormData, [e.target.name] :prevFormData[e.target.name].split(',').filter(val => val !== e.target.value).join(',')}
         })
     }
 

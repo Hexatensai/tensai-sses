@@ -4,7 +4,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import NewEnvironment from '../Modals/NewEnvironment';
 import EnvironmentEdits from '../Modals/EnvironmentEdits';
-import { data } from 'jquery';
 
 
 function Environments() {
