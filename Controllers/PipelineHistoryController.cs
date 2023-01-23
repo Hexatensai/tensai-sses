@@ -120,9 +120,9 @@ namespace tensai_sses.Controllers
             };
 
             Console.WriteLine($"Starting Job 'unique-tensai'...");
-
+            var AppUrl = string.Join("/", pipelineHistory.applicationURL.Split('/').Skip(1).ToArray());
             IDictionary<string, string> pipelinebuildparameters = new Dictionary<string, string>();
-            pipelinebuildparameters.Add("GITHUB_URL", pipelineHistory.applicationURL);
+            pipelinebuildparameters.Add("GITHUB_URL", AppUrl);
             pipelinebuildparameters.Add("TARGET_BRANCH", pipelineHistory.branch_name);
             pipelinebuildparameters.Add("GIT_CREDENTIAL", "git-server-ssh");
             pipelinebuildparameters.Add("EMAIL_ADDRESS", "shashidharh@hexaware.com");
