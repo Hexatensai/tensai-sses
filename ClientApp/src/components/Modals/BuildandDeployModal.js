@@ -53,7 +53,7 @@ BootstrapDialogTitle.propTypes = {
 
 export default function BuildandDeployModal({ open, setOpen }) {
   const [formData, setFormData] = useState({});
-  const [stageTools, setStageTools] = useState([]);
+  const [stageTools, setStageTools] = useState(null);
 
   const fetchData = () => {
     return fetch("https://52.146.8.157:7244/api/stagetool/")
@@ -71,7 +71,7 @@ export default function BuildandDeployModal({ open, setOpen }) {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://52.146.8.157:7255/api/PipelineHistory", {
+      const res = await fetch("https://52.146.8.157:7244/api/PipelineHistory", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -108,14 +108,11 @@ export default function BuildandDeployModal({ open, setOpen }) {
           >
             <label>
               <span className="col-md-3">Application Repository:</span>
-              <Tdropdown
-                name={"scm_tool"}
-                options={
-                  stageTools?.filter(data =>
-                    data.pipelinename === "CodeClone"
-                  )
-                }
-                setFormData={setFormData}
+              <input type="text" className="form-control" style={{marginLeft:"2rem", maxWidth:"480px"}}
+              disabled setFormData={setFormData}
+              labelName={"Application Repository"}
+              defaultValue={stageTools?.[7]?.accessurl}
+              name={"applicationURL"}
               />
             </label>
           </Box>
