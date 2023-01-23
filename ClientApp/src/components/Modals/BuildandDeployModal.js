@@ -12,6 +12,7 @@ import Box from "@mui/material/Box";
 import Tdropdown from "../tensaiDropdown/Tdropdown";
 import { branch, environment } from "../../Constant/BuildandDeployConstant";
 import { useEffect, useState } from "react";
+import TTextField from "../TensaitextField/TTextField";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -51,14 +52,14 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function BuildandDeployModal({ open, setOpen }) {
+export default function BuildandDeployModal({ open, setOpen,rowData }) {
   const [formData, setFormData] = useState({});
-  const [stageTools, setStageTools] = useState(null);
+  const [data, setData] = useState(null); 
 
   const fetchData = () => {
-    return fetch("https://52.146.8.157:7244/api/stagetool/")
+    return fetch("https://52.146.8.157:7244/api/Project/")
       .then((response) => response.json())
-      .then((data) => setStageTools(data));
+      .then((data) => setData(data));
   };
   useEffect(() => {
     fetchData();
@@ -108,11 +109,11 @@ export default function BuildandDeployModal({ open, setOpen }) {
           >
             <label>
               <span className="col-md-3">Application Repository:</span>
-              <input type="text" className="form-control" style={{marginLeft:"2rem", maxWidth:"480px"}}
-              disabled setFormData={setFormData}
-              labelName={"Application Repository"}
-              defaultValue={stageTools?.[7]?.accessurl}
-              name={"applicationURL"}
+              <TTextField
+                setFormData={setFormData}
+                labelName={"Application Repository"}
+                defaultValue={rowData?.scm_tool} 
+                name={"applicationURL"}
               />
             </label>
           </Box>
