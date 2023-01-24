@@ -1,0 +1,17 @@
+jenkinsnet==1.0.4
+Microsoft.AspNetCore.ApiAuthorization.IdentityServer==7.0.1
+Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore==7.0.1
+Microsoft.AspNetCore.Identity.EntityFrameworkCore==7.0.1
+Microsoft.AspNetCore.Identity.UI==7.0.1
+Microsoft.AspNetCore.Mvc.Cors==2.2.0
+Microsoft.AspNetCore.Mvc.NewtonsoftJson==3.1.16
+Microsoft.AspNetCore.SpaProxy==7.0.1
+Microsoft.EntityFrameworkCore.Design==7.0.1
+Microsoft.EntityFrameworkCore.Relational==7.0.1
+Microsoft.EntityFrameworkCore.Sqlite==7.0.1
+Microsoft.EntityFrameworkCore.SqlServer==7.0.1
+Microsoft.EntityFrameworkCore.Tools==7.0.1
+Microsoft.VisualStudio.Azure.Containers.Tools.Targets==1.17.0
+Microsoft.VisualStudio.Web.CodeGeneration.Design==7.0.1
+Npgsql==7.0.1
+Npgsql.EntityFrameworkCore.PostgreSQL==7.0.1

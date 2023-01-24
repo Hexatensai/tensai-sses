@@ -8,7 +8,7 @@ namespace tensai_sses.Models
     {
           public int id { get; set; }
 
-           public string applicationURL { get; set; }
+           public string scm_tool { get; set; }
 
             public string branch_name { get; set; }
 

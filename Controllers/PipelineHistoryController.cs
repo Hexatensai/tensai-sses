@@ -120,7 +120,7 @@ namespace tensai_sses.Controllers
             };
 
             Console.WriteLine($"Starting Job 'unique-tensai'...");
-            var AppUrl = string.Join("/", pipelineHistory.applicationURL.Split('/').Skip(1).ToArray());
+            var AppUrl = string.Join("/", pipelineHistory.scm_tool.Split('/').Skip(1).ToArray());
             IDictionary<string, string> pipelinebuildparameters = new Dictionary<string, string>();
             pipelinebuildparameters.Add("GITHUB_URL", AppUrl);
             pipelinebuildparameters.Add("TARGET_BRANCH", pipelineHistory.branch_name);
