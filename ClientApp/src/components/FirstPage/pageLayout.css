@@ -4,15 +4,42 @@
     box-sizing: border-box;
   }
 
-  .form-class {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 6rem;
+  .login-wrap .col {
+    border: 1px solid #1ba61b;
+    height: 550px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .form-class .btn {
-    padding: 0.5rem 2rem;
-    font-size: 20px;
-    background-color: #06C;
+  .login-wrap .left-side{
+    background-color: #06c;
+  }
+  .login-wrap .logo-outer {
+    border-radius: 50%;
+    width: 200px;
+    height: 100px;
+  }
+  .login-wrap p {
     color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: left;
+  }
+  .login-wrap button {
+    background: #06c;
+    color: #fff;
+    font-size: 16px;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 400px;
+    margin-right: 0;
+    font-weight: 700;
+  }
+  .login-wrap .sign-up, .login-wrap .login {
+    width: 195px;
+  }
+  .login-wrap .sign-up {
+    margin-right: 10px;
   }

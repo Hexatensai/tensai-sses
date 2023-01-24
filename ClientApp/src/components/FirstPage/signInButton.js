@@ -1,6 +1,7 @@
 import React from "react";
 import  {useMsal}  from "@azure/msal-react";
 import  { loginRequest } from "../../authConfig";
+import tensaiLogo from '../../assets/tensai.png';
 import './pageLayout.css'
 
 
@@ -17,10 +18,30 @@ export default function SignInButton() {
             });
         }
     }
+    const onLogin = () => {
+      window.location.replace("/projects")
+    };
     return (
-        
-        <div className="form-class" >
-          <button type="button" className="btn btn-primary" onClick={()=> handleLogin("popup")}>SignIn</button>
+      <div class="container page-outer login-wrap">
+        <div class="row">
+          <div className="col col-md-5 left-side">
+            <div>
+              <div className='logo-outer'>
+                <img  src={tensaiLogo} alt='tensai-logo'/>
+              </div>
+              <p>Platform for faster, Secure & Smarter  software Release !!</p>
+            </div>
+          </div>
+          <div class="col col-md-7">
+            <div>
+            <button type="button" className="btn btn-primary sign-up">Sign Up</button>
+            <button type="button" className="btn btn-primary login"  onClick={onLogin}>Login</button> <br/>
+            <button type="button" className="btn btn-primary">Continue with Email</button> <br/>
+            <button type="button" className="btn btn-primary">Continue with Github</button> <br/>
+            <button type="button" className="btn btn-primary" onClick={()=> handleLogin("popup")}>Continue with Company SSO</button>
+            </div>
+          </div>
         </div>
+      </div>
     );
 }
