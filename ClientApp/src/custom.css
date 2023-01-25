@@ -164,6 +164,9 @@ align-items: center;
 .css-56cttj {
   margin: 0 0 16px 0  !important;
 }
+.new-project-wrap .css-56cttj {
+  width: initial !important;
+}
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   max-width: 800px !important;
   width: 100%;
@@ -174,4 +177,8 @@ align-items: center;
 .checkbox-outer {
   display: flex;
   width: 50%;
+}
+.link-text {
+  color: initial;
+  text-decoration: none;
 }

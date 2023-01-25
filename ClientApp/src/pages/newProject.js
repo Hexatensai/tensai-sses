@@ -12,12 +12,18 @@ const navigate = useNavigate()
   const [formData, setFormData] = useState({});
 
   const [categories, setCategory] = useState([]);
+  const [cicds, setCICD] = useState([]);
   const [stageTools, setStageTools] = useState([]);
   const [environments, setEnvironments] = useState([]);
   const fetchData = () => {
     return fetch("https://52.146.8.157:7244/api/category/")
       .then((response) => response.json())
       .then((category) => setCategory(category));
+  };
+  const fetchCICD = () => {
+    return fetch("https://52.146.8.157:7244/api/CICD/")
+      .then((response) => response.json())
+      .then((cicd) => setCICD(cicd));
   };
   const fetchEnvironments = () => {
     return fetch("https://52.146.8.157:7244/api/environments/")
@@ -33,6 +39,7 @@ const navigate = useNavigate()
     fetchData();
     fetcStageTool();
     fetchEnvironments();
+    fetchCICD();
   }, []);
 
   useEffect(()=> {
@@ -84,13 +91,19 @@ const navigate = useNavigate()
             setFormData={setFormData}
           />
           <Tdropdown
-            fieldName={"Application Code Repository"}
+            fieldName={"Code Repository"}
             name={"scm_tool"}
             options={
               stageTools?.filter(stage =>
                 stage.pipelinename === "CodeClone"
               )
             }
+            setFormData={setFormData}
+          />
+          <Tdropdown
+            fieldName={"CI/CD"}
+            name={"cicd"}
+            options={cicds || []}
             setFormData={setFormData}
           />
           <Tdropdown
@@ -104,7 +117,7 @@ const navigate = useNavigate()
             setFormData={setFormData}
           />
           <Tdropdown
-            fieldName={"Static Code Analysis"}
+            fieldName={"Code Quality"}
             name={"code_analysis"}
             options={
               stageTools?.filter((stage) =>

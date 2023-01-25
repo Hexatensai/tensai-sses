@@ -36,7 +36,9 @@ function Project() {
             {projects.map((data, key) => {
                return (
                 <tr key={key}>
-                    <td>{data.name}</td>
+                    <td>
+                      <a href="/pipelines" className='link-text' title='name'>{data.name}</a>
+                    </td>
                     <td>
                       {data.category}
                     </td>

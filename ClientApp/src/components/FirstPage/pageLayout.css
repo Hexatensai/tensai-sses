@@ -5,8 +5,7 @@
   }
 
   .login-wrap .col {
-    border: 1px solid #1ba61b;
-    height: 550px;
+    height: 100vh;
     padding: 2rem;
     text-align: center;
     display: flex;
@@ -14,7 +13,7 @@
     align-items: center;
   }
   .login-wrap .left-side{
-    background-color: #06c;
+    background-color: #28293d;
   }
   .login-wrap .logo-outer {
     border-radius: 50%;
@@ -23,12 +22,14 @@
   }
   .login-wrap p {
     color: #fff;
-    font-weight: 700;
-    font-size: 20px;
     text-align: left;
   }
+  .login-wrap .master-text {
+    font-size: 32px;
+    line-height: 44px;
+  }
   .login-wrap button {
-    background: #06c;
+    background: #0278d5;
     color: #fff;
     font-size: 16px;
     padding: 0.5rem;

@@ -12,15 +12,15 @@ export class Header extends Component {
     return (  
       <header>
         <div className='header-outer row'>
-          <div className='logo-outer col-sm'>
+          <div className='logo-outer col-sm-3'>
             <a href="/" title='tensai-logo'>
               <img  src={tensaiLogo} alt='tensai-logo'/>
             </a>
           </div>
-          <div className='col-sm header-center-align'>
-            <h2 style={{fontSize:"25px"}}>Tensai Release</h2>
+          <div className='col-sm-6 header-center-align'>
+            <h2 style={{fontSize:"25px"}}>Onboarding and Release Orchestration Platform</h2>
           </div>
-          <div className='col-sm header-right-align'>
+          <div className='col-sm-3 header-right-align'>
             <div className='profile-icon'>
               <PermIdentityIcon fontSize="large"/>
               <NavDropdown id="signout-dropdown">

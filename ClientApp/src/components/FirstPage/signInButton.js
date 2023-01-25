@@ -22,14 +22,15 @@ export default function SignInButton() {
       window.location.replace("/projects")
     };
     return (
-      <div class="container page-outer login-wrap">
+      <div class="container login-wrap" style={{maxWidth:"100%"}}>
         <div class="row">
           <div className="col col-md-5 left-side">
             <div>
               <div className='logo-outer'>
                 <img  src={tensaiLogo} alt='tensai-logo'/>
               </div>
-              <p>Platform for faster, Secure & Smarter  software Release !!</p>
+              <p className="master-text">Low Code Release Orchestration Platform.</p>
+              <p>Simplify enterprise DevOps onboarding - Tool Chain, Technology app ecosysystem. Orchestrate multi releases with transparencey with real-time insights.</p>
             </div>
           </div>
           <div class="col col-md-7">
