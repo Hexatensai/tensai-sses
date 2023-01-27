@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import '../custom.css';
 
 function Project() {
+
+  const highlitHandler =()=>{
+        console.log("changed....")
+  } 
     const [projects, setProjects] = useState([]);
 
     const fetchData = () => {
@@ -37,7 +41,9 @@ function Project() {
                return (
                 <tr key={key}>
                     <td>
-                      <a href="/pipelines" className='link-text' title='name'>{data.name}</a>
+                      <Link to="/pipelines" className='link-text' onClick={highlitHandler}>
+                      {data.name}
+                      </Link>
                     </td>
                     <td>
                       {data.category}
