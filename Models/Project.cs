@@ -23,5 +23,7 @@ namespace tensai_sses.Models
           public string project_deploy_env { get; set; }
           public string category { get; set; }
 
+          public string CICD { get; set; }
+
     }
 }

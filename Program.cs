@@ -40,6 +40,9 @@ builder.Services.AddDbContext<ProjectEnvironmentDbContext>(options =>
     builder.Services.AddDbContext<PipelineHistoryDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+    builder.Services.AddDbContext<CICDDBContext>(options =>
+    options.UseNpgsql(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -61,6 +64,7 @@ builder.Services.AddCors(p=> p.AddPolicy("corspolicy",build=>
 
 
 builder.Services.AddRazorPages();
+
 
 
 
