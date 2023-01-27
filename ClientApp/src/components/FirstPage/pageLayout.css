@@ -1,7 +1,18 @@
+@font-face {
+  font-family: "Tangerine-Regular";
+  src: url("../../assets/Tangerine/Tangerine-Regular.ttf");
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  .custom-text {
+    font-family: "Tangerine-Regular";
+    font-size: 2rem;
+    line-height: 40px;
+    margin-top: 3rem;
   }
 
   .login-wrap .col {
