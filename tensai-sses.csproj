@@ -13,7 +13,7 @@
     <RootNamespace>tensai_sses</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>a52a06ae-8504-4ca8-9b31-ac6a9baf7874</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
