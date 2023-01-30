@@ -30,7 +30,7 @@ export default function SignInButton() {
                 <img  src={tensaiLogo} alt='tensai-logo'/>
               </div>
               <p className="master-text">Low Code Release Orchestration Platform</p>
-              <p className="custom-text">Simplify enterprise DevOps onboarding - Tool Chain, Technology app ecosysystem. Orchestrate multi releases with transparencey with real-time insights</p>
+              <p className="custom-text">Simplify enterprise DevOps onboarding - Tool Chain, Technology App ecosystem. Orchestrate multi releases with transparency and real-time insights</p>
             </div>
           </div>
           <div class="col col-md-7">
