@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NewProject = () => {
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({});
 
   const [categories, setCategory] = useState([]);
@@ -30,14 +30,14 @@ const navigate = useNavigate()
       .then((response) => response.json())
       .then((environment) => setEnvironments(environment));
   };
-  const fetcStageTool = () => {
+  const fetchStageTool = () => {
     return fetch("https://52.146.8.157:7244/api/stagetool/")
       .then((response) => response.json())
       .then((stage) => setStageTools(stage));
   };
   useEffect(() => {
     fetchData();
-    fetcStageTool();
+    fetchStageTool();
     fetchEnvironments();
     fetchCICD();
   }, []);

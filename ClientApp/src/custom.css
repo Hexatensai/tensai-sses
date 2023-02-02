@@ -182,3 +182,43 @@ align-items: center;
   color: initial;
   text-decoration: none;
 }
+
+.tools-box {
+  border: 1px solid #ccc;
+  position: relative;
+  flex: 45%;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.tools-box:nth-child(odd){
+  margin-right: 10px;
+}
+.tools-box label {
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+.tools-box input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+}
+.toolbox-outer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.card-title {
+  text-align: center;
+  font-weight: 600;
+}
+.card {
+  margin-bottom: 3rem;
+  width: 25rem;
+  margin-right: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

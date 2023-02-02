@@ -1,155 +1,137 @@
 
 import React, { Component } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { useState, useEffect } from "react";
+import Card from 'react-bootstrap/Card';
 import '../custom.css';
 
-
-export class ToolsChain extends Component {
-  static displayName = ToolsChain.name;
-    render(){
-      return(
-        <div className='toolschain-outer page-outer'>
-          <h2 className='github-text'>Managing GitHub</h2>
-          <div className="tabs">
-            <Tabs>
-              <Tab label="REPOSITORY">
-                <div>
-                  <Box
-                    component="form"
-                    sx={{
-                      '& > :not(style)': { m: 1, width: '25ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                  >
-                    <label>
-                      <span className='col-md-3'>Onwer/Organization Name:</span>
-                      <TextField className='col-md-3' id="outlined-basic" label="Name" variant="outlined" />
-                    </label>
-                  </Box>
-                  <Box
-                    component="form"
-                    sx={{
-                      '& > :not(style)': { m: 1, width: '25ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                  >
-                    <label>
-                    <span className='col-md-3'>Repository Name:</span>
-                      <TextField className='col-md-3' id="outlined-basic" label="Repository" variant="outlined" />
-                    </label>
-                  </Box>
-                  <Stack spacing={2} direction="row">
-                    <Button variant="contained" className='btn-style'>Create</Button>
-                    <Button variant="outlined" className='btn-style'>Cancel</Button>
-                  </Stack>
-                </div>
-              </Tab>
-              <Tab label="WEBHOOKS">
-              <div>
-                <Box
-                  component="form"
-                  sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <label>
-                    <span className='col-md-3'>Onwer/Organization Name:</span>
-                    <TextField id="outlined-basic" className='col-md-3'label="Name" variant="outlined" />
-                  </label>
-                </Box>
-                <Box
-                  component="form"
-                  sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <label>
-                  <span className='col-md-3'>Repository Name:</span>
-                    <TextField className='col-md-3' id="outlined-basic" label="Repository" variant="outlined" />
-                  </label>
-                </Box>
-                <Box
-                  component="form"
-                  sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <label>
-                  <span className='col-md-3'>Hook URL:</span>
-                    <TextField id="outlined-basic" className='col-md-3' label="Url" variant="outlined" />
-                  </label>
-                </Box>
-                <label>
-                  <span className='col-md-3'>Subscribe Pullrequest Event:</span>
-                  <input className="form-check-input" type="checkbox" value="" ></input>
-                </label>
-                <Stack spacing={2} direction="row">
-                  <Button variant="contained" className='btn-style'>Add</Button>
-                  <Button variant="outlined" className='btn-style'>Cancel</Button>
-                </Stack>
-                </div>
-              </Tab>
-              </Tabs>
-          </div>
-        </div> 
-      )
-    }
-  }
-  
-  class Tabs extends React.Component{
-    state ={
-      activeTab: this.props.children[0].props.label
-    }
-    changeTab = (tab) => {
-  
-      this.setState({ activeTab: tab });
+  const ToolsChain = () => {
+    const [cicds, setCICD] = useState([]);
+    const [stageTools, setStageTools] = useState([]);
+    const [formData, setFormData] = useState({});
+    const fetchCICD = () => {
+      return fetch("https://52.146.8.157:7244/api/CICD/")
+        .then((response) => response.json())
+        .then((cicd) => setCICD(cicd));
     };
-    render(){
-      
-      let content;
-      let buttons = [];
-      return (
-        <div>
-          {React.Children.map(this.props.children, child =>{
-            buttons.push(child.props.label)
-            if (child.props.label === this.state.activeTab) content = child.props.children
-          })}
-           
-          <TabButtons activeTab={this.state.activeTab} buttons={buttons} changeTab={this.changeTab}/>
-          <div className="tab-content">{content}</div>
-          
-        </div>
-      );
-    }
-  }
-  
-  const TabButtons = ({buttons, changeTab, activeTab}) =>{
-     
+    const fetchStageTool = () => {
+      return fetch("https://52.146.8.157:7244/api/stagetool/")
+        .then((response) => response.json())
+        .then((stage) => setStageTools(stage));
+    };
+    useEffect(() => {
+      fetchCICD();
+      fetchStageTool();
+    }, []);
+
     return(
-      <div className="tab-buttons">
-      {buttons.map(button =>{
-         return <button className={button === activeTab? 'active': ''} onClick={()=>changeTab(button)}>{button}</button>
-      })}
-      </div>
+      <div className='page-outer' style={{ display: 'flex', flexWrap:'wrap'}}>
+        <Card>
+          <Card.Body>
+            <Card.Title>Repository Management</Card.Title>
+            <div className='toolbox-outer'>
+                <div className='tools-box'>
+                  <label class="control control--checkbox">Github
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                </div>
+                <div className='tools-box'>
+                  <label class="control control--checkbox">Gitlab
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                </div>
+            </div>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Body>
+            <Card.Title>CI/CD</Card.Title>
+            <div className='toolbox-outer'>
+              {cicds.map((cicd, key) => {
+                return (
+                <div className='tools-box'>
+                    <label class="control control--checkbox">{cicd.name}
+                      <input type="checkbox" checked="checked"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                </div>
+                );
+              })}
+            </div>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Body>
+            <Card.Title>Artifacts Management</Card.Title>
+            <div className='toolbox-outer'>
+            {stageTools.map((stage, key) => {
+              if (stage.pipelinename === "ArtifactPublish"){
+                return (
+                  <div className='tools-box'>
+                      <label class="control control--checkbox">{stage.toolname}
+                        <input type="checkbox" checked="checked"/>
+                        <div class="control__indicator"></div>
+                      </label>
+                  </div>
+                  );
+                }
+              })}
+            </div>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Body>
+            <Card.Title>Code Security</Card.Title>
+            <div className='toolbox-outer'>
+            {stageTools.map((stage, key) => {
+              if (stage.pipelinename === "SAST" ){
+                return (
+                  <div className='tools-box'>
+                      <label class="control control--checkbox">{stage.toolname}
+                        <input type="checkbox" checked="checked"/>
+                        <div class="control__indicator"></div>
+                      </label>
+                  </div>
+                  );
+                }
+              })}
+              <div className='tools-box'>
+                  <label class="control control--checkbox">Snyk
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+              </div>
+            </div>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Body>
+            <Card.Title>Configuration Management</Card.Title>
+            <div className='toolbox-outer'>
+              <div className='tools-box'>
+                <label class="control control--checkbox">Ansible
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </div>
+              <div className='tools-box'>
+                <label class="control control--checkbox">Chef
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </div>
+              <div className='tools-box'>
+                <label class="control control--checkbox">Puppet
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </div>
+            </div>
+          </Card.Body>
+        </Card>
+      </div> 
     )
   }
   
-  const Tab = props =>{
-    return(
-      <React.Fragment>
-        {props.children}
-      </React.Fragment>
-    )
-  }
-   
+  export default ToolsChain;
